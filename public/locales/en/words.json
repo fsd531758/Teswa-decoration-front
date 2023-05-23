@@ -1,0 +1,89 @@
+{
+	"companyTitle": "Faan Alme3mar Decoration",
+	"goTop": "go to top",
+
+	"navbar": {
+		"home": "home",
+		"aboutUs": "about us",
+		"contactUs": "contact us",
+		"otherLanguage": "عربي",
+		"quoteRequest": "quote request",
+		"products": "products"
+	},
+
+	"footer": {
+		"aboutUs": "about us",
+		"contactUs": "contact us",
+		"quoteRequest": "quote request",
+
+		"headers": {
+			"links": "links",
+			"contactUs": "contact us"
+		}
+	},
+
+	"copyrights": {
+		"developed": "designed & developed by ",
+		"company": "marwan group for information technology"
+	},
+
+	"breadcrumb": {
+		"home": "home",
+		"aboutUs": "about us",
+		"contactUs": "contact us",
+		"quoteRequest": "quote request",
+		"sections": "sections",
+		"categories": "categories",
+		"products": "products",
+		"productDetails": "product details",
+
+		"sectionName": "section name here",
+		"categoryName": "category name here",
+		"productName": "product name here"
+	},
+
+	"labels": {
+		"firstName": "first name",
+		"lastName": "last name",
+		"email": "email",
+		"phone": "phone number",
+		"country": "country",
+		"message": "your message"
+	},
+
+	"placeholders": {
+		"firstName": "first name",
+		"lastName": "last name",
+		"email": "enter your email address",
+		"phone": "",
+		"country": "-- country --",
+		"message": "enter your thoughts here ..."
+	},
+
+	"hints": {
+		"message": {
+			"length": "out of {{ max }} characters"
+		}
+	},
+
+	"buttons": {
+		"search": "search now",
+		"submitMessage": "submit message",
+		"submitRequest": "submit request",
+		"goHome": "go home",
+		"aboutUs": "about us",
+		"contactUs": "contact us",
+		"viewMore": "view more",
+
+		"searching": "searching ...",
+		"sending": "sending ...",
+		"loading": "loading ..."
+	},
+
+	"socials": {
+		"whatsapp": "whatsapp",
+		"facebook": "facebook",
+		"twitter": "twitter",
+		"email": "email"
+	}
+}

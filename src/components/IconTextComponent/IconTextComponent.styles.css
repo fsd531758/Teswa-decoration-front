@@ -1,0 +1,47 @@
+.icon-text {
+	width: fit-content;
+	margin-bottom: 0.25rem;
+}
+
+.icon-text:last-child {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
+.icon-text .value,
+.icon-text .text-value {
+	padding-top: 0 !important;
+}
+
+.icon-text .value:last-child {
+	margin-bottom: 0;
+}
+
+.icon-text .icon {
+	width: fit-content;
+}
+
+.icon-text svg {
+	width: calc(var(--size) * 1px);
+	height: calc(var(--size) * 1px);
+	color: rgba(var(--text-color), 0.5);
+
+	transition: color var(--transition-duration);
+}
+
+.icon-text a,
+.icon-text .text-value {
+	text-decoration: none;
+	color: rgba(var(--text-color), 0.5);
+
+	transition: color var(--transition-duration);
+}
+
+.icon-text:hover * {
+	color: rgba(var(--action-color), 1) !important;
+}
+
+/* RTL */
+[lang='ar'] .icon-text svg {
+	transform: scaleX(-1);
+}

@@ -1,0 +1,21 @@
+{
+	"contactUsThroughWhatsapp": "تواصل عبر واتسآب",
+	"findUs": "تفاصيل التواصل",
+	"contactUs": "تواصل معنا",
+	"startingPrice": "أسعار تبدأ من {{price}}",
+	"ModelArea_zero": "لا يوجد معلومات متاحة",
+	"ModelArea": "المساحة: {{count}} متر مربع",
+	"ModelArea_other": "المساحة: {{count}} متر مربع",
+	"requestModel": "طلب استفسار",
+	"joinNewsletter": "انضم للقائمة البريدية",
+
+	"errors": {
+		"404": "عفواً، لا يمكنك الدخول إلى هذه الصفحة!",
+		"default": "حدث خطأ ما ... برجاء المحاولة في وقت لاحق",
+		"noData": "لا يوجد {{title}} متوفرة حالياً",
+
+		"codes": {
+			"404": "خطأ 404"
+		}
+	}
+}

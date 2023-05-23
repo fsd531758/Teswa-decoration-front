@@ -1,0 +1,24 @@
+.btn {
+	--hover-bg-color: #383633;
+	--hover-title-color: #ffffff;
+	border-radius: 3rem !important;
+	border: none !important;
+	background-color: rgba(var(--btn-color), 1) !important;
+	padding: 0.8rem 1.6rem !important;
+
+	transition-property: color, background-color;
+	transition-duration: calc(0.5 * var(--transition-duration));
+}
+
+.btn:hover {
+	background-color: var(--hover-bg-color) !important;
+}
+
+.btn:hover * {
+	color: var(--hover-title-color) !important;
+}
+
+/* RTL */
+[lang='ar'] .btn {
+	letter-spacing: 1px !important;
+}

@@ -1,0 +1,35 @@
+/* Whatsapp Icon */
+#whatsapp-icon-component {
+	cursor: pointer;
+	position: fixed;
+	bottom: 3rem;
+	right: 3rem;
+	z-index: 88;
+	width: 4rem;
+	border-radius: 50%;
+	padding: 0.5rem !important;
+	background-color: #54cc61;
+}
+
+/* Tooltip Text */
+.tooltip .tooltip-inner {
+	max-width: fit-content !important;
+	background-color: rgba(var(--primary-color), 1);
+	color: rgba(var(--action-color), 1);
+}
+
+/* Tooltip Arrow */
+.tooltip-arrow::before {
+	border-left-color: rgba(var(--primary-color), 1) !important;
+}
+
+/* RTL */
+[lang='ar'] #whatsapp-icon-component {
+	right: unset;
+	left: 3rem;
+}
+
+[lang='ar'] .tooltip-arrow::before {
+	border-left-color: transparent !important;
+	border-right-color: rgba(var(--primary-color), 1) !important;
+}

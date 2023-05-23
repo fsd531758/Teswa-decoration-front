@@ -1,0 +1,93 @@
+{
+	"companyTitle": "فن المعمار للديكور",
+	"goTop": "الذهاب لأعلى",
+
+	"navbar": {
+		"home": "الرئيسية",
+		"aboutUs": "من نحن",
+		"contactUs": "تواصل معنا",
+		"otherLanguage": "en",
+		"quoteRequest": "طلب عرض سعر",
+		"products": "المنتجات"
+	},
+
+	"footer": {
+		"contactUs": "تواصل معنا",
+		"aboutUs": "من نحن",
+		"quoteRequest": "طلب عرض سعر",
+
+		"headers": {
+			"links": "روابط",
+			"contactUs": "تواصل معنا"
+		}
+	},
+
+	"copyrights": {
+		"developed": "تصميم وبرمجة ",
+		"company": "مروان جروب لتقنية المعلومات"
+	},
+
+	"errors": {
+		"products": "منتجات"
+	},
+
+	"breadcrumb": {
+		"home": "الرئيسية",
+		"aboutUs": "من نحن",
+		"contactUs": "تواصل معنا",
+		"quoteRequest": "طلب عرض سعر",
+		"sections": "الأقسام",
+		"categories": "الفئات",
+		"products": "المنتجات",
+		"productDetails": "تفاصيل المنتج",
+
+		"sectionName": "اسم القسم هنا",
+		"categoryName": "اسم الفئة هنا",
+		"productName": "اسم المنتج هنا"
+	},
+
+	"labels": {
+		"firstName": "الاسم الأول",
+		"lastName": "اسم العائلة",
+		"email": "البريد الإلكتروني",
+		"phone": "رقم الجوال",
+		"country": "البلد",
+		"message": "رسالتك"
+	},
+
+	"placeholders": {
+		"firstName": "الاسم الأول",
+		"lastName": "اسم العائلة",
+		"email": "ادخل بريدك الإلكتروني",
+		"phone": "",
+		"country": "-- البلد --",
+		"message": "من فضلك قم بكتابة رسالتك هنا ..."
+	},
+
+	"hints": {
+		"message": {
+			"length": "من أصل {{ max }} حرف"
+		}
+	},
+
+	"buttons": {
+		"search": "ابحث الآن",
+		"submitMessage": "إرسال الرسالة",
+		"submitRequest": "إرسال الطلب",
+		"goHome": "العودة إلى الصفحة الرئيسية",
+		"aboutUs": "من نحن",
+		"contactUs": "تواصل معنا",
+		"viewMore": "مشاهدة المزيد",
+
+		"searching": "جاري البحث ...",
+		"sending": "جاري الإرسال ...",
+		"loading": "جاري الإرسال ..."
+	},
+
+	"socials": {
+		"whatsapp": "واتسآب",
+		"facebook": "فيسبوك",
+		"twitter": "تويتر",
+		"email": "البريد الإلكتروني"
+	}
+}

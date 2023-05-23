@@ -1,0 +1,108 @@
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { isMultilingual } from '../../routes/index.routes';
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAboutData } from '../../store/reducers/aboutData.reducer';
+import { fetchHomeData } from '../../store/reducers/homeData.reducer';
+import { fetchSections } from '../../store/reducers/sections.reducer';
+import {
+	fetchContactsData,
+	fetchSettingsData,
+} from '../../store/reducers/settingsData.reducer';
+
+// Styles
+import 'react-toastify/dist/ReactToastify.css';
+
+// Components
+import FooterComponent from './../../components/FooterComponent/FooterComponent';
+import GoToTopComponent from './../../components/GoToTopComponent/GoToTopComponent';
+import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
+import NavbarComponent from './../../components/NavbarComponent/NavbarComponent';
+import WhatsappIconComponent from './../../components/WhatsappIconComponent/WhatsappIconComponent';
+
+const MainTemplatePage = ({ children }) => {
+	// Handle Language Change
+	const { lang } = useParams();
+	const location = useLocation();
+	const navigate = useNavigate();
+	useEffect(() => {
+		isMultilingual &&
+			navigate(
+				`${location.pathname.replace(
+					`/${lang}`,
+					lang === 'en' ? '/en' : '/ar'
+				)}`
+			);
+		// eslint-disable-next-line
+	}, [lang]);
+
+	// Redux
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchHomeData(lang ?? 'ar'));
+		dispatch(fetchAboutData(lang ?? 'ar'));
+		dispatch(fetchSections({ language: lang ?? 'ar', searchParams: {} }));
+		dispatch(fetchSettingsData(lang ?? 'ar'));
+		dispatch(fetchContactsData(lang ?? 'ar'));
+		// eslint-disable-next-line
+	}, [lang]);
+
+	const { isSettingsLoading, isContactsLoading } = useSelector(
+		(state) => state.settingsData
+	);
+	const { isHomeDataLoading } = useSelector((state) => state.homeData);
+	const { isSectionsLoading } = useSelector((state) => state.sections);
+	const { isAboutDataLoading } = useSelector((state) => state.aboutData);
+
+	// Scroll To Top On Initial Render
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'smooth',
+		});
+	}, [lang]);
+
+	return isSettingsLoading ||
+		isContactsLoading ||
+		isHomeDataLoading ||
+		isSectionsLoading ||
+		isAboutDataLoading ? (
+		<LoadingComponent />
+	) : (
+		<>
+			{/* Page Navbar */}
+			<NavbarComponent />
+
+			{/* Current Page Content */}
+			{children}
+
+			{/* Page Footer */}
+			<FooterComponent />
+
+			{/* Whatsapp Icon */}
+			<WhatsappIconComponent />
+
+			{/* Go To Top Button */}
+			<GoToTopComponent />
+
+			{/* Meta Tags */}
+			<MetaTagsComponent />
+
+			{/* Toast Messages */}
+			<ToastContainer
+				position='top-right'
+				autoClose={6000}
+				newestOnTop
+				pauseOnHover
+				rtl={lang === 'en' ? false : true}
+			/>
+		</>
+	);
+};
+
+export default MainTemplatePage;

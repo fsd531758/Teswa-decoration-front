@@ -1,0 +1,162 @@
+/* ************************************************************************ */
+/* ************************ Swiper Component Module *********************** */
+/* ************************************************************************ */
+/* Main Swiper */
+#home-page .swiper,
+#about-us-page .swiper {
+	--padding-value: 1rem;
+	overflow: visible !important;
+}
+
+#home-page .swiper-wrapper,
+#about-us-page .swiper-wrapper {
+	overflow: hidden !important;
+}
+
+/* Slide Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+	color: rgba(var(--text-color), 0.75);
+	transition: color calc(0.5 * var(--transition-duration));
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+	color: rgba(var(--text-color), 1);
+}
+
+/* Next Slide Button */
+.swiper-button-next {
+	right: var(--padding-value) !important;
+	left: unset !important;
+}
+
+/* Previous Slide Button */
+.swiper-button-prev {
+	left: var(--padding-value) !important;
+	right: unset !important;
+}
+
+/* Pagination Bullet Points */
+.swiper-pagination {
+	bottom: -1rem !important;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: rgba(var(--action-color), 1);
+}
+
+/* RTL */
+[lang='ar'] .swiper-button-next {
+	transform: scaleX(-1) !important;
+}
+
+[lang='ar'] .swiper-button-prev {
+	transform: scaleX(-1) !important;
+}
+
+/* ************************************************************************ */
+/* ****************************** Custom Styles *************************** */
+/* ************************************************************************ */
+/* Slider Container */
+#home-page .main-slider-component {
+	height: 100vh;
+}
+
+#about-us-page .main-slider-component {
+	height: 50vh;
+}
+
+.main-slider-component .slider-container {
+	position: relative;
+	background-color: rgba(var(--primary-color), 1);
+}
+
+/* Slide Overlay */
+.main-slider-component .slider-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0.3),
+		rgba(0, 0, 0, 0.1)
+	);
+}
+
+/* Slider Text Container */
+.main-slider-component .slider-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 33;
+	width: fit-content;
+	max-width: 50%;
+	color: rgba(var(--text-color), 1);
+	background-color: rgba(var(--primary-color), 0.6);
+	padding: 1.5rem 1.8rem;
+	border-radius: 2rem;
+	opacity: 0;
+	transition: opacity calc(1.5 * var(--transition-duration));
+}
+
+.main-slider-component .slider-container.swiper-slide-active .slider-text {
+	opacity: 1;
+}
+
+@media only screen and (max-width: 992px) {
+	.main-slider-component .slider-text {
+		width: 75%;
+		max-width: unset;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.main-slider-component .slider-text {
+		width: 100%;
+		max-width: unset;
+	}
+}
+
+/* Slider Subtitle */
+.slider-container .slider-text .subtitle {
+	color: rgba(var(--action-color), 1);
+}
+
+/* Slider Title */
+.slider-container .slider-text .title {
+	font-size: 2rem;
+	line-height: 1;
+	font-weight: 600;
+	margin: 0.5rem 0 1.5rem;
+}
+
+/* Slider Description */
+.slider-container .slider-text .description * {
+	font-size: 1.5rem;
+	padding: 0;
+	margin: 0;
+}
+
+.slider-container .slider-text .title,
+.slider-container .slider-text .subtitle,
+.slider-container .slider-text .description {
+	animation-name: none;
+	animation-play-state: paused;
+}
+
+.slider-container.swiper-slide-active .slider-text .title,
+.slider-container.swiper-slide-active .slider-text .subtitle,
+.slider-container.swiper-slide-active .slider-text .description {
+	animation-name: fadeInUp;
+	animation-play-state: running;
+}
+
+/* RTL */
+[lang='ar'] .slider-container .slider-text .title {
+	line-height: 1.6;
+}

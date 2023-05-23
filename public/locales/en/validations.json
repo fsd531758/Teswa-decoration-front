@@ -1,0 +1,36 @@
+{
+	"firstName": {
+		"min": "First name must be {{ min }} characters at minimum",
+		"max": "First name must be less than {{ max }} characters",
+		"required": "First name is required"
+	},
+
+	"lastName": {
+		"min": "Last name must be {{ min }} characters at minimum",
+		"max": "Last name must be less than {{ max }} characters",
+		"required": "Last name is required"
+	},
+
+	"email": {
+		"format": "Invalid email address format",
+		"required": "Email is required"
+	},
+
+	"phone": {
+		"format": "Invalid phone number format",
+		"min": "Phone number must be {{ min }} characters at minimum",
+		"required": "Phone number is required"
+	},
+
+	"country": {
+		"min": "Country name must be {{ min }} characters at minimum",
+		"max": "Country name must be less than {{ max }} characters",
+		"required": "Country name is required"
+	},
+
+	"message": {
+		"min": "Message must be {{ min }} characters at minimum",
+		"max": "Message must be less than {{ max }} characters",
+		"required": "Message is required"
+	}
+}

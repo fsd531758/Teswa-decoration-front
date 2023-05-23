@@ -1,13 +1,100 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ************************************************************************** */
+/* *****************************  Variables  ******************************** */
+/* ************************************************************************** */
+:root {
+	--primary-color: 234, 233, 229; /* #eae9e5 */
+	--secondary-color: 193, 186, 177; /* #c1bab1 */
+	--action-color: 179, 145, 108; /* #b3916c */
+	--text-color: 56, 54, 51; /* #383633 */
+	--btn-color: 179, 145, 108; /* #b3916c */
+
+	--transition-duration: 500ms;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ************************************************************************** */
+/* ******************************  Global   ********************************* */
+/* ************************************************************************** */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+}
+
+/* RTL */
+[lang='ar'] *,
+[lang='ar'] *::before,
+[lang='ar'] *::after {
+	font-family: 'Cairo', sans-serif;
+}
+
+/* ************************************************************************** */
+/* *************************  Page Container   ****************************** */
+/* ************************************************************************** */
+body {
+	overflow-x: hidden;
+}
+
+.page {
+	padding: 5.5rem 0 2rem !important;
+	min-height: 100vh;
+}
+
+ul,
+ol,
+li {
+	margin: 0;
+	padding: 0 1rem;
+}
+
+.error {
+	color: #dc3545;
+	font-size: 1.5rem;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+/* ************************************************************************** */
+/* *****************************  Text Limit   ****************************** */
+/* ************************************************************************** */
+.text-limit {
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	display: -webkit-box !important;
+	-webkit-line-clamp: var(--lines) !important;
+	/* number of lines to show */
+	line-clamp: var(--lines) !important;
+	-webkit-box-orient: vertical !important;
+}
+
+/* ************************************************************************** */
+/* ****************************  Description   ****************************** */
+/* ************************************************************************** */
+.page .description li::marker {
+	content: '\f005';
+	font-family: 'FontAwesome';
+	color: rgba(var(--action-color), 1);
+}
+
+[lang='ar'] .page .description li::marker {
+	transform: scaleX(-1);
+}
+
+/* ************************************************************************** */
+/* **************************  Section Title   ****************************** */
+/* ************************************************************************** */
+.section-title {
+	color: rgba(var(--action-color), 1);
+	text-align: center;
+	text-transform: capitalize;
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 992px) {
+	.section-title {
+		font-size: 1.5rem;
+	}
 }

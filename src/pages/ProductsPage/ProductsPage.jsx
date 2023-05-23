@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
@@ -25,6 +25,8 @@ const ProductsPage = () => {
 	}, [lang]);
 
 	const section = { id: 1 };
+
+	const products = [];
 
 	const breadcrumbItems = [
 		{
@@ -82,7 +84,21 @@ const ProductsPage = () => {
 			/>
 
 			{/* Content */}
-			<Container>ProductsPage</Container>
+			<Container>
+				<Row xs={1} className='g-4'>
+					{products.length > 0 ? (
+						products.map((product, index) => (
+							<Col key={index}>{product.title}</Col>
+						))
+					) : (
+						<Col className='error '>
+							{t('sentences:errors.noData', {
+								title: t('words:errors.products'),
+							})}
+						</Col>
+					)}
+				</Row>
+			</Container>
 		</Container>
 	);
 };

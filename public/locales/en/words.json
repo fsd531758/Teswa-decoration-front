@@ -27,6 +27,12 @@
 		"company": "marwan group for information technology"
 	},
 
+	"errors": {
+		"sections": "sections",
+		"categories": "categories",
+		"products": "products"
+	},
+
 	"breadcrumb": {
 		"home": "home",
 		"aboutUs": "about us",

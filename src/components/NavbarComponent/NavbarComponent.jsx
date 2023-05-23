@@ -13,6 +13,7 @@ import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { isMultilingual, routes } from './../../routes/index.routes';
 
+// Images
 import CategoryImage from './../../assets/images/logos/logo.png';
 
 // Redux
@@ -247,9 +248,7 @@ const NavbarComponent = () => {
 										)}
 										onClick={handleClose}
 										className='text-limit'
-										style={{
-											'--lines': 1,
-										}}
+										style={{ '--lines': 1 }}
 									>
 										{section.title}
 									</NavDropdown.Item>

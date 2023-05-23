@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Col, Container, Row } from 'react-bootstrap';
+import { useLocation, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
+
+// Images
+import CategoryImage from './../../assets/images/logos/logo.png';
 
 // Redux
 
@@ -14,6 +17,8 @@ import './CategoriesPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
+import CategoryCardComponent from './../../components/CategoryCardComponent/CategoryCardComponent';
 
 const CategoriesPage = () => {
 	// i18next
@@ -23,6 +28,8 @@ const CategoriesPage = () => {
 		i18n.changeLanguage(lang ?? 'ar');
 		// eslint-disable-next-line
 	}, [lang]);
+
+	const location = useLocation();
 
 	const breadcrumbItems = [
 		{
@@ -52,6 +59,54 @@ const CategoriesPage = () => {
 		});
 	}, [lang]);
 
+	const categories = [
+		{
+			id: 1,
+			title: lang === 'en' ? 'category 1' : 'الفئة 1',
+			image: CategoryImage,
+			section: {
+				id: 1,
+				title: lang === 'en' ? 'section 1' : 'القسم 1',
+			},
+		},
+		{
+			id: 2,
+			title: lang === 'en' ? 'category 2' : 'الفئة 2',
+			image: CategoryImage,
+			section: {
+				id: 1,
+				title: lang === 'en' ? 'section 1' : 'القسم 1',
+			},
+		},
+		{
+			id: 3,
+			title: lang === 'en' ? 'category 3' : 'الفئة 3',
+			image: CategoryImage,
+			section: {
+				id: 2,
+				title: lang === 'en' ? 'section 2' : 'القسم 2',
+			},
+		},
+		{
+			id: 4,
+			title: lang === 'en' ? 'category 4' : 'الفئة 4',
+			image: CategoryImage,
+			section: {
+				id: 3,
+				title: lang === 'en' ? 'section 3' : 'القسم 3',
+			},
+		},
+		{
+			id: 5,
+			title: lang === 'en' ? 'category 5' : 'الفئة 5',
+			image: CategoryImage,
+			section: {
+				id: 2,
+				title: lang === 'en' ? 'section 2' : 'القسم 2',
+			},
+		},
+	];
+
 	return (
 		<Container
 			fluid
@@ -70,7 +125,32 @@ const CategoriesPage = () => {
 			/>
 
 			{/* Content */}
-			<Container>CategoriesPage</Container>
+			<Container>
+				<Row xs={1} className='g-4 mb-5'>
+					<Col className='d-flex justify-content-around align-items-center'>
+						<ButtonComponent
+							text='show specific category products'
+							link={`${location.pathname}/categories/2`}
+						/>
+					</Col>
+				</Row>
+
+				<Row className='g-4'>
+					{categories.length > 0 ? (
+						categories.map((category, index) => (
+							<Col key={index} xs={12} md={6} xl={4}>
+								<CategoryCardComponent category={category} />
+							</Col>
+						))
+					) : (
+						<Col xs={12} className='error'>
+							{t('sentences:errors.noData', {
+								title: t('words:errors.categories'),
+							})}
+						</Col>
+					)}
+				</Row>
+			</Container>
 		</Container>
 	);
 };

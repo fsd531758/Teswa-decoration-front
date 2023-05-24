@@ -1,12 +1,12 @@
 // Backend Base URL
 export const BASE_URL = {
 	local: 'http://localhost:8000/api',
-	demo: 'https://demoyoursite.net/asmaa/amyal/public/api',
+	demo: 'https://demoyoursite.net/asmaa/fan_elmeamar_decoration/public/api',
 };
 
 // Replace IDs found within URL
 export const REGEX = new RegExp(
-	':lang|:section_id|:category_id|:product_id',
+	':lang|:section_id|:category_id|:product_id|service_id',
 	'gim'
 );
 export const replacePathVariables = (matched, data) => {
@@ -23,6 +23,9 @@ export const replacePathVariables = (matched, data) => {
 			break;
 		case ':product_id':
 			result = data.product_id;
+			break;
+		case ':service_id':
+			result = data.service_id;
 			break;
 		default:
 			result = 'modify_general_file_within_helpers_directory';

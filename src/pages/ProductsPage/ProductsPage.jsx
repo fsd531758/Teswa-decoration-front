@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { useLocation, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
@@ -17,6 +18,7 @@ import './ProductsPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import ProductCardComponent from './../../components/ProductCardComponent/ProductCardComponent';
 
 const ProductsPage = () => {
@@ -27,6 +29,8 @@ const ProductsPage = () => {
 		i18n.changeLanguage(lang ?? 'ar');
 		// eslint-disable-next-line
 	}, [lang]);
+
+	const location = useLocation();
 
 	const breadcrumbItems = [
 		{
@@ -160,6 +164,29 @@ const ProductsPage = () => {
 
 			{/* Content */}
 			<Container>
+				{/* Back Button */}
+				<Row xs={1} className='g-4 mb-5'>
+					<Col className='d-flex justify-content-center align-items-center'>
+						<ButtonComponent
+							text={t('words:buttons.goBack')}
+							icon={
+								lang === 'en' ? (
+									<FaArrowLeft size={20} />
+								) : (
+									<FaArrowRight size={20} />
+								)
+							}
+							link={`${location.pathname.split('/').slice(0, -2).join('/')}`}
+							styles={{
+								icon: {
+									marginLeft: lang === 'en' ? '0' : '0.5rem',
+									marginRight: lang === 'en' ? '0.5rem' : '0',
+								},
+							}}
+						/>
+					</Col>
+				</Row>
+
 				<Row className='g-4'>
 					{products.length > 0 ? (
 						products.map((product, index) => (

@@ -3,8 +3,8 @@
 	color: rgba(var(--action-color), 1);
 	background: linear-gradient(
 			to right,
-			rgba(255, 255, 255, 0.75),
-			rgba(255, 255, 255, 0.1)
+			rgba(var(--text-color), 0.75) 40%,
+			transparent
 		),
 		var(--image-url);
 	background-position: bottom;
@@ -13,14 +13,14 @@
 }
 
 .breadcrumb-item {
-	color: rgba(var(--text-color), 1);
+	color: rgba(255, 255, 255, 1);
 	text-decoration: none;
 	font-size: 16px;
 	transition: color 250ms;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-	color: #383633;
+	color: rgba(255, 255, 255, 0.5);
 }
 
 .breadcrumb-item:hover,
@@ -33,12 +33,14 @@
 	pointer-events: none;
 }
 
-/* RTL */
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
 #breadcrumb-component[dir='rtl'] {
 	background: linear-gradient(
 			to left,
-			rgba(255, 255, 255, 0.75),
-			rgba(255, 255, 255, 0.1)
+			rgba(var(--text-color), 0.75) 40%,
+			transparent
 		),
 		var(--image-url);
 	background-position: bottom;

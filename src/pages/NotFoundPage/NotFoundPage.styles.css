@@ -1,9 +1,18 @@
 #not-found-page {
-    min-height: 100vh;
-    background-color: #090d0e !important;
+	min-height: 100vh;
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 1) !important;
 }
 
 /* Company Logo */
 #not-found-page .image {
-    max-height: 18rem;
+	max-height: 18rem;
 }
+
+#not-found-page .text-container {
+	color: rgba(var(--text-color), 1);
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */

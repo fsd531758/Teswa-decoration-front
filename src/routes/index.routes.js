@@ -12,6 +12,15 @@ export const routes = {
 
 	quoteRequest: isMultilingual ? '/:lang/quote-request' : '/quote-request',
 
+	services: {
+		root: isMultilingual ? '/:lang/services' : '/services',
+
+		// ! NOT USED AT ALL
+		// single: isMultilingual
+		// 	? '/:lang/services/:service_id'
+		// 	: '/services/:service_id',
+	},
+
 	sections: {
 		// ! NOT USED AT ALL
 		// root: isMultilingual ? '/:lang/sections' : '/sections',

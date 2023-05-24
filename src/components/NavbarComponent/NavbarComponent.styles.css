@@ -1,6 +1,11 @@
 /* ******************************************************************* */
 /* *****************************   Navbar   ************************** */
 /* ******************************************************************* */
+#navbar-component {
+	color: rgba(var(--text-color), 1);
+	background-color: rgba(255, 255, 255, 1) !important;
+}
+
 /* Navbar Image */
 #navbar-component img {
 	max-width: 4rem;
@@ -84,7 +89,7 @@
 
 #navbar-component .navbar-toggler-icon {
 	background-image: none !important;
-	background-color: rgba(var(--action-color), 0.5);
+	background-color: rgba(var(--text-color), 1);
 	height: 2px;
 	position: relative;
 
@@ -123,7 +128,9 @@
 	width: 100%;
 }
 
-/* RTL */
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
 #navbar-component[lang='ar'] .dropdown .dropdown-menu {
 	left: unset;
 	right: 0;
@@ -188,8 +195,8 @@
 
 /* Offcanvas Close Button */
 .offcanvas .btn-close {
-	filter: invert(69%) sepia(11%) saturate(1179%) hue-rotate(351deg)
-		brightness(85%) contrast(83%);
+	filter: invert(74%) sepia(45%) saturate(5090%) hue-rotate(11deg)
+		brightness(96%) contrast(94%);
 	opacity: 0.5;
 
 	transition: opacity calc(0.5 * var(--transition-duration));
@@ -206,7 +213,7 @@
 .offcanvas #translation {
 	position: relative;
 	width: fit-content;
-	color: rgba(0, 0, 0, 0.55);
+	color: rgba(var(--text-color), 0.5);
 	margin-bottom: 0.5rem;
 	transition: color calc(0.5 * var(--transition-duration));
 }
@@ -300,7 +307,9 @@
 	right: 1rem;
 }
 
-/* RTL */
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
 .offcanvas[lang='ar'] .nav-link::before {
 	left: unset;
 	right: 50%;

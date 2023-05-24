@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useLocation, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
@@ -17,6 +18,7 @@ import './CategoriesPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import CategoryCardComponent from './../../components/CategoryCardComponent/CategoryCardComponent';
 
 const CategoriesPage = () => {
@@ -125,6 +127,29 @@ const CategoriesPage = () => {
 
 			{/* Content */}
 			<Container>
+				{/* Back Button */}
+				<Row xs={1} className='g-4 mb-5'>
+					<Col className='d-flex justify-content-center align-items-center'>
+						<ButtonComponent
+							text={t('words:buttons.goBack')}
+							icon={
+								lang === 'en' ? (
+									<FaArrowLeft size={20} />
+								) : (
+									<FaArrowRight size={20} />
+								)
+							}
+							link={`${location.pathname.split('/').slice(0, -2).join('/')}`}
+							styles={{
+								icon: {
+									marginLeft: lang === 'en' ? '0' : '0.5rem',
+									marginRight: lang === 'en' ? '0.5rem' : '0',
+								},
+							}}
+						/>
+					</Col>
+				</Row>
+
 				<Row className='g-4'>
 					{categories.length > 0 ? (
 						categories.map((category, index) => (

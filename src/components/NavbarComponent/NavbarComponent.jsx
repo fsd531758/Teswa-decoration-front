@@ -227,6 +227,19 @@ const NavbarComponent = () => {
 								{t('words:navbar.aboutUs')}
 							</Nav.Link>
 
+							{/* Services */}
+							<Nav.Link
+								as={NavLink}
+								to={routes.services.root.replace(REGEX, function (matched) {
+									return replacePathVariables(matched, {
+										lang: lang,
+									});
+								})}
+								onClick={handleClose}
+							>
+								{t('words:navbar.services')}
+							</Nav.Link>
+
 							{/* Products */}
 							<NavDropdown
 								title={t('words:navbar.products')}

@@ -1,24 +1,33 @@
 .btn {
-	--hover-bg-color: #383633;
-	--hover-title-color: #ffffff;
+	--hover-bg-color: rgba(var(--action-color), 1);
 	border-radius: 3rem !important;
-	border: none !important;
-	background-color: rgba(var(--btn-color), 1) !important;
+	border: 2px solid var(--hover-bg-color) !important;
+	background-color: transparent !important;
 	padding: 0.8rem 1.6rem !important;
+	box-shadow: rgba(var(--primary-color), 0.24) 0px 3px 8px;
 
-	transition-property: color, background-color;
-	transition-duration: calc(0.5 * var(--transition-duration));
+	transition-property: background-color;
+	transition-duration: var(--transition-duration);
 }
 
 .btn:hover {
 	background-color: var(--hover-bg-color) !important;
 }
 
-.btn:hover * {
-	color: var(--hover-title-color) !important;
+.btn * {
+	color: rgba(var(--text-color), 0.75) !important;
+
+	transition-property: color;
+	transition-duration: var(--transition-duration);
 }
 
-/* RTL */
+.btn:hover * {
+	color: rgba(var(--text-color), 1) !important;
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
 [lang='ar'] .btn {
 	letter-spacing: 1px !important;
 }

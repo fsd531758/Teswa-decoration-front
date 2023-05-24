@@ -7,6 +7,7 @@
 		"aboutUs": "about us",
 		"contactUs": "contact us",
 		"otherLanguage": "عربي",
+		"services": "services",
 		"quoteRequest": "quote request",
 		"products": "products"
 	},
@@ -14,6 +15,7 @@
 	"footer": {
 		"aboutUs": "about us",
 		"contactUs": "contact us",
+		"services": "services",
 		"quoteRequest": "quote request",
 
 		"headers": {
@@ -37,6 +39,7 @@
 		"home": "home",
 		"aboutUs": "about us",
 		"contactUs": "contact us",
+		"services": "services",
 		"quoteRequest": "quote request",
 		"sections": "sections",
 		"categories": "categories",
@@ -80,6 +83,7 @@
 		"aboutUs": "about us",
 		"contactUs": "contact us",
 		"viewMore": "view more",
+		"goBack": "go back",
 
 		"searching": "searching ...",
 		"sending": "sending ...",

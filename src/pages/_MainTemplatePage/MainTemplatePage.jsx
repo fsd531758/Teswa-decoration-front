@@ -67,11 +67,7 @@ const MainTemplatePage = ({ children }) => {
 		});
 	}, [lang]);
 
-	return isSettingsLoading ||
-		isContactsLoading ||
-		isHomeDataLoading ||
-		isSectionsLoading ||
-		isAboutDataLoading ? (
+	return isSettingsLoading || isContactsLoading ? (
 		<LoadingComponent />
 	) : (
 		<>

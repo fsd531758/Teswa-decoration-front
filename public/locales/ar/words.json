@@ -7,6 +7,7 @@
 		"aboutUs": "من نحن",
 		"contactUs": "تواصل معنا",
 		"otherLanguage": "en",
+		"services": "الخدمات",
 		"quoteRequest": "طلب عرض سعر",
 		"products": "المنتجات"
 	},
@@ -14,6 +15,7 @@
 	"footer": {
 		"contactUs": "تواصل معنا",
 		"aboutUs": "من نحن",
+		"services": "الخدمات",
 		"quoteRequest": "طلب عرض سعر",
 
 		"headers": {
@@ -37,6 +39,7 @@
 		"home": "الرئيسية",
 		"aboutUs": "من نحن",
 		"contactUs": "تواصل معنا",
+		"services": "الخدمات",
 		"quoteRequest": "طلب عرض سعر",
 		"sections": "الأقسام",
 		"categories": "الفئات",
@@ -80,6 +83,7 @@
 		"aboutUs": "من نحن",
 		"contactUs": "تواصل معنا",
 		"viewMore": "مشاهدة المزيد",
+		"goBack": "العودة إلى الخلف",
 
 		"searching": "جاري البحث ...",
 		"sending": "جاري الإرسال ...",

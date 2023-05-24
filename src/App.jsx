@@ -13,6 +13,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 import QuoteRequestPage from './pages/QuoteRequestPage/QuoteRequestPage';
+import ServicesPage from './pages/ServicesPage/ServicesPage';
 import MainTemplatePage from './pages/_MainTemplatePage/MainTemplatePage';
 
 const App = () => {
@@ -95,6 +96,16 @@ const App = () => {
 					element={
 						<MainTemplatePage>
 							<QuoteRequestPage />
+						</MainTemplatePage>
+					}
+				/>
+
+				{/* Services Page */}
+				<Route
+					path={routes.services.root}
+					element={
+						<MainTemplatePage>
+							<ServicesPage />
 						</MainTemplatePage>
 					}
 				/>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
 // Redux
@@ -73,7 +74,7 @@ const NotFoundPage = () => {
 						/>
 					</Col>
 
-					<Col className='d-flex flex-column justify-content-center align-items-center p-5 animate__animated animate__fadeInUp'>
+					<Col className='text-container d-flex flex-column justify-content-center align-items-center p-5 animate__animated animate__fadeInUp'>
 						{/* Main Text */}
 						<h1 className='display-1 m-0 p-0'>
 							{t('sentences:errors.codes.404')}
@@ -83,13 +84,15 @@ const NotFoundPage = () => {
 						{/* Redirect Button To Home */}
 						<ButtonComponent
 							text={t('words:buttons.goHome')}
-							link={routes.home}
+							link={routes.home.replace(REGEX, function (matched) {
+								return replacePathVariables(matched, {
+									lang: lang,
+								});
+							})}
 							className='button'
 							styles={{
 								button: {
 									width: 'fit-content',
-									'--hover-bg-color': '#ffffff',
-									'--hover-title-color': '#b3916c',
 								},
 							}}
 						/>

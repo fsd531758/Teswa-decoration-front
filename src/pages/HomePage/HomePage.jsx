@@ -48,6 +48,7 @@ const HomePage = () => {
 			>
 				Main Slider
 			</Container>
+
 			{/* About Section */}
 			<Container
 				fluid
@@ -58,6 +59,7 @@ const HomePage = () => {
 			>
 				About Section
 			</Container>
+
 			{/* Services */}
 			<Container
 				fluid
@@ -68,6 +70,7 @@ const HomePage = () => {
 			>
 				Services
 			</Container>
+
 			{/* Summary Section */}
 			<Container
 				fluid
@@ -78,6 +81,7 @@ const HomePage = () => {
 			>
 				Summary Section
 			</Container>
+
 			{/* Products Filter */}
 			<Container
 				fluid
@@ -88,6 +92,18 @@ const HomePage = () => {
 			>
 				Products Filter
 			</Container>
+
+			{/* Partners */}
+			<Container
+				fluid
+				className='text-bg-primary d-flex justify-content-center align-items-center'
+				style={{
+					minHeight: '50vh',
+				}}
+			>
+				Partners
+			</Container>
+
 			{/* Trending Products Slider */}
 			<Container
 				fluid
@@ -98,6 +114,7 @@ const HomePage = () => {
 			>
 				Trending Products Slider
 			</Container>
+
 			{/* Contact Section */}
 			<Container
 				fluid

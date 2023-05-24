@@ -17,7 +17,6 @@ import './CategoriesPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
-import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import CategoryCardComponent from './../../components/CategoryCardComponent/CategoryCardComponent';
 
 const CategoriesPage = () => {
@@ -126,15 +125,6 @@ const CategoriesPage = () => {
 
 			{/* Content */}
 			<Container>
-				<Row xs={1} className='g-4 mb-5'>
-					<Col className='d-flex justify-content-around align-items-center'>
-						<ButtonComponent
-							text='show specific category products'
-							link={`${location.pathname}/categories/2`}
-						/>
-					</Col>
-				</Row>
-
 				<Row className='g-4'>
 					{categories.length > 0 ? (
 						categories.map((category, index) => (

@@ -28,6 +28,7 @@
 [lang='ar'] *::before,
 [lang='ar'] *::after {
 	font-family: 'Cairo', sans-serif;
+	line-height: 1.6;
 }
 
 /* ************************************************************************** */

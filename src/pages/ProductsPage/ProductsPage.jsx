@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
+// Images
+import ProductImage from './../../assets/images/logos/logo.png';
+
 // Redux
 
 // i18next
@@ -13,20 +16,17 @@ import { useTranslation } from 'react-i18next';
 import './ProductsPage.styles.css';
 
 // Components
-import BreadcrumbComponent from '../../components/BreadcrumbComponent/BreadcrumbComponent';
+import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import ProductCardComponent from './../../components/ProductCardComponent/ProductCardComponent';
 
 const ProductsPage = () => {
 	// i18next
-	const { lang } = useParams();
+	const { lang, section_id } = useParams();
 	const { t, i18n } = useTranslation();
 	useEffect(() => {
 		i18n.changeLanguage(lang ?? 'ar');
 		// eslint-disable-next-line
 	}, [lang]);
-
-	const section = { id: 1 };
-
-	const products = [];
 
 	const breadcrumbItems = [
 		{
@@ -43,7 +43,7 @@ const ProductsPage = () => {
 			href: routes.sections.single.replace(REGEX, function (matched) {
 				return replacePathVariables(matched, {
 					lang: lang,
-					section_id: section.id,
+					section_id: section_id,
 				});
 			}),
 			isActive: false,
@@ -66,6 +66,81 @@ const ProductsPage = () => {
 		});
 	}, [lang]);
 
+	const products = [
+		{
+			id: 1,
+			title: lang === 'en' ? 'product 1' : 'المنتج 1',
+			price: 100,
+			image: ProductImage,
+			shortDescription:
+				lang === 'en'
+					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+			section: {
+				id: 1,
+				title: lang === 'en' ? 'section 1' : 'القسم 1',
+			},
+			category: {
+				id: 1,
+				title: lang === 'en' ? 'category 1' : 'الفئة 1',
+			},
+		},
+		{
+			id: 2,
+			title: lang === 'en' ? 'product 2' : 'المنتج 2',
+			price: 100,
+			image: ProductImage,
+			shortDescription:
+				lang === 'en'
+					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+			section: {
+				id: 2,
+				title: lang === 'en' ? 'section 2' : 'القسم 2',
+			},
+			category: {
+				id: 2,
+				title: lang === 'en' ? 'category 2' : 'الفئة 2',
+			},
+		},
+		{
+			id: 3,
+			title: lang === 'en' ? 'product 3' : 'المنتج 3',
+			price: 100,
+			image: ProductImage,
+			shortDescription:
+				lang === 'en'
+					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+			section: {
+				id: 3,
+				title: lang === 'en' ? 'section 3' : 'القسم 3',
+			},
+			category: {
+				id: 2,
+				title: lang === 'en' ? 'category 2' : 'الفئة 2',
+			},
+		},
+		{
+			id: 4,
+			title: lang === 'en' ? 'product 4' : 'المنتج 4',
+			price: 100,
+			image: ProductImage,
+			shortDescription:
+				lang === 'en'
+					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+			section: {
+				id: 3,
+				title: lang === 'en' ? 'section 3' : 'القسم 3',
+			},
+			category: {
+				id: 1,
+				title: lang === 'en' ? 'category 1' : 'الفئة 1',
+			},
+		},
+	];
+
 	return (
 		<Container
 			fluid
@@ -85,13 +160,15 @@ const ProductsPage = () => {
 
 			{/* Content */}
 			<Container>
-				<Row xs={1} className='g-4'>
+				<Row className='g-4'>
 					{products.length > 0 ? (
 						products.map((product, index) => (
-							<Col key={index}>{product.title}</Col>
+							<Col key={index} xs={12} md={6} xl={4}>
+								<ProductCardComponent product={product} />
+							</Col>
 						))
 					) : (
-						<Col className='error '>
+						<Col xs={12} className='error'>
 							{t('sentences:errors.noData', {
 								title: t('words:errors.products'),
 							})}

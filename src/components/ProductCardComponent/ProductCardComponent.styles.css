@@ -1,0 +1,79 @@
+/* Card Container */
+.product-card-component {
+	--padding-value: 2rem;
+	height: 18rem;
+	overflow: hidden;
+	text-decoration: none;
+	padding: 0.4rem;
+	border: 4px solid transparent;
+	border-radius: 0.5rem;
+
+	transition-property: transform, border-color;
+	transition-duration: var(--transition-duration);
+}
+
+.product-card-component:hover {
+	transform: translate(0, -1rem);
+	border-color: rgba(var(--action-color), 1);
+}
+
+.product-card-component .card {
+	border-radius: 0.5rem;
+}
+
+/* Text Container */
+.product-card-component .text-container {
+	color: rgba(var(--action-color), 1);
+	top: 100%;
+	/* top: 0; */
+	transition-property: top;
+	transition-duration: var(--transition-duration);
+}
+
+.product-card-component:hover .text-container {
+	top: 0;
+}
+
+/* Title */
+.product-card-component .text-container .title {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+/* Short Description */
+.product-card-component .text-container .short-description,
+.product-card-component .text-container .short-description * {
+	margin: 0;
+	padding: 0;
+}
+
+/* Price */
+.product-card-component .text-container .price {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+
+	transition-property: top;
+	transition-duration: var(--transition-duration);
+}
+
+.product-card-component .text-container .price > * {
+	background-color: transparent !important;
+	border: 1px solid rgba(var(--action-color), 1);
+	color: rgba(var(--action-color), 1);
+	font-size: 1rem;
+	padding: 0.5rem 1rem;
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
+/* Price */
+[lang='ar'] .product-card-component .text-container .price {
+	right: unset;
+	left: 1rem;
+}
+
+[lang='ar'] .product-card-component .text-container .price > * {
+	padding: 0.25rem 1rem;
+}

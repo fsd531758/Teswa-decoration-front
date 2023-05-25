@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 // Redux
+import { useSelector } from 'react-redux';
 
 // Styles
 import './HomePage.styles.css';
 
 // Components
+import MainSliderComponent from './../../components/MainSliderComponent/MainSliderComponent';
 
 const HomePage = () => {
 	// i18next
@@ -20,6 +22,7 @@ const HomePage = () => {
 	}, [lang]);
 
 	// Redux
+	const { sliders } = useSelector((state) => state.homeData);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -39,14 +42,8 @@ const HomePage = () => {
 			className='page overflow-hidden'
 		>
 			{/* Main Slider */}
-			<Container
-				fluid
-				className='text-bg-danger d-flex justify-content-center align-items-center'
-				style={{
-					minHeight: '50vh',
-				}}
-			>
-				Main Slider
+			<Container fluid className='px-0'>
+				<MainSliderComponent sliders={sliders} />
 			</Container>
 
 			{/* About Section */}

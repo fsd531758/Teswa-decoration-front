@@ -62,6 +62,7 @@ const MainSliderComponent = ({
 					},
 				}}
 				pagination={{
+					enabled: hasPagination,
 					dynamicBullets: hasPagination,
 				}}
 				navigation={hasNavigation}
@@ -79,7 +80,7 @@ const MainSliderComponent = ({
 							alt='slider image'
 							className='text-capitalize w-100 h-100'
 							style={{
-								objectFit: 'fill',
+								objectFit: 'cover',
 								objectPosition: 'center',
 							}}
 							onError={({ currentTarget }) => {
@@ -98,7 +99,7 @@ const MainSliderComponent = ({
 									{/* Subtitle */}
 									{slide.sub_title && (
 										<Col
-											className='subtitle animate__animated animate__fadeInUp animate__delay-1s'
+											className='subtitle text-uppercase animate__animated animate__fadeInUp animate__delay-1s'
 											style={{
 												'--animate-delay': '0.5s',
 											}}
@@ -110,7 +111,7 @@ const MainSliderComponent = ({
 									{/* Main Title */}
 									{slide.title && (
 										<Col
-											className='title text-uppercase animate__animated animate__fadeInUp animate__delay-1s'
+											className='title text-capitalize animate__animated animate__fadeInUp animate__delay-1s'
 											style={{
 												'--animate-delay': '0.75s',
 											}}

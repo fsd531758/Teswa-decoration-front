@@ -24,10 +24,10 @@ export const homeDataSlice = createSlice({
 	initialState: {
 		sliders: [],
 		aboutUs: {},
-		statistics: {},
-		separators: [],
-		partners: {},
-		newsletter: {},
+		services: [],
+		experience: {},
+		experienceData: [],
+		partners: [],
 		isHomeDataLoading: true,
 	},
 	name: 'homeDataSlice',
@@ -41,17 +41,23 @@ export const homeDataSlice = createSlice({
 		// Fulfilled
 		builder.addCase(fetchHomeData.fulfilled, (state, action) => {
 			state.sliders = action.payload.sliders;
+
 			state.aboutUs = action.payload.about_us;
-			state.statistics = action.payload.statistics;
-			state.separators = [
-				action.payload.separator_1,
-				action.payload.separator_2,
-			];
-			state.partners = {
-				main: action.payload.partners,
-				funding: action.payload.funding_partners,
-			};
-			state.newsletter = action.payload.newsletter;
+
+			state.services = action.payload.services;
+
+			// Extract Specific Keys From (experience) Object
+			state.experience = (({ id, title, sub_title, description, image }) => ({
+				id,
+				title,
+				sub_title,
+				description,
+				image,
+			}))(action.payload.experience);
+
+			state.experienceData = action.payload.experience.experiences;
+
+			state.partners = action.payload.partners;
 
 			state.isHomeDataLoading = false;
 		});

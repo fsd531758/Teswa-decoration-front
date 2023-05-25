@@ -1,0 +1,95 @@
+/* Images */
+#product-details-page .image-container .image {
+	background-color: #eeeeee;
+}
+
+#product-details-page .image-container .image img {
+	--scale-value: 1.2;
+	--rotate-value: 2deg;
+	cursor: pointer;
+	object-fit: cover !important;
+	object-position: center !important;
+	height: 24rem !important;
+
+	transition: transform var(--transition-duration);
+}
+
+#product-details-page .image-container .image:hover img {
+	transform: scale(var(--scale-value)) rotate(calc(-1 * var(--rotate-value)));
+}
+
+#product-details-page .image-container:nth-child(even) .image {
+	margin-top: 2rem;
+}
+
+/* Title */
+#product-details-page .text-container .title {
+	font-weight: bold;
+	font-size: 2rem;
+	width: fit-content;
+	padding-bottom: 1rem;
+}
+
+#product-details-page .text-container .title::after {
+	--padding-value: 12px;
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: translate(var(--padding-value), -50%);
+	width: 25%;
+	max-width: 10rem;
+	height: 0.2rem;
+	background-color: rgba(var(--action-color), 1);
+}
+
+/* Price */
+#product-details-page .text-container .price > * {
+	background-color: transparent !important;
+	border: 1px solid rgba(var(--action-color), 1);
+	color: rgba(var(--action-color), 1);
+	font-size: 1rem;
+	padding: 0.5rem 1rem;
+}
+
+/* Short Description */
+#product-details-page .text-container .short-description {
+	color: rgba(var(--action-color), 1);
+	font-style: italic;
+	font-weight: bold;
+	margin-top: 0.5rem;
+}
+
+#product-details-page .text-container .short-description * {
+	margin: 0;
+	padding: 0;
+	text-align: justify;
+}
+
+/* Description */
+#product-details-page .text-container .description {
+	color: rgba(var(--text-color), 1);
+}
+
+#product-details-page .text-container .description * {
+	text-align: justify;
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
+/* Images */
+[lang='ar'] #product-details-page .image-container .image:hover img {
+	transform: scale(var(--scale-value)) rotate(var(--rotate-value));
+}
+/* Title */
+[lang='ar'] #product-details-page .text-container .title::after {
+	right: 0;
+	left: unset;
+	transform: translate(calc(-1 * var(--padding-value)), -50%);
+}
+
+/* Price */
+[lang='ar'] #product-details-page .text-container .price > * {
+	padding: 0.25rem 1rem;
+}

@@ -76,7 +76,7 @@ li {
 .page .description li::marker {
 	content: '\f5aa';
 	font-family: 'FontAwesome';
-	color: rgba(var(--action-color), 1);
+	color: rgba(var(--action-color), 0.75);
 }
 
 [lang='ar'] .page .description li::marker {

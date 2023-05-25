@@ -1,3 +1,34 @@
 /* ******************************************************************************** */
+/* *****************************   About Section   ******************************** */
+/* ******************************************************************************** */
+#home-page .about-section {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+/* Subtitle */
+#home-page .about-section .subtitle {
+	color: rgba(var(--action-color), 1);
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+/* Title */
+#home-page .about-section .title {
+	font-size: 2rem;
+}
+
+/* Description */
+#home-page .about-section .description {
+	color: rgba(var(--text-color), 0.5);
+}
+
+#home-page .about-section .description * {
+	margin: 0;
+	padding: 0;
+	text-align: justify;
+}
+
+/* ******************************************************************************** */
 /* **********************************   RTL   ************************************* */
 /* ******************************************************************************** */

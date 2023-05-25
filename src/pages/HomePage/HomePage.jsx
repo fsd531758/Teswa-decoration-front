@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ const HomePage = () => {
 	}, [lang]);
 
 	// Redux
-	const { sliders } = useSelector((state) => state.homeData);
+	const { sliders, aboutUs } = useSelector((state) => state.homeData);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -47,14 +47,30 @@ const HomePage = () => {
 			</Container>
 
 			{/* About Section */}
-			<Container
-				fluid
-				className='text-bg-primary d-flex justify-content-center align-items-center'
-				style={{
-					minHeight: '50vh',
-				}}
-			>
-				About Section
+			<Container fluid className='about-section px-0'>
+				<Container>
+					<Row xs={1} md={2} className='g-4'>
+						{/* Title & Subtitle Container */}
+						<Col>
+							<Row
+								xs={1}
+								className='d-flex flex-column justify-content-center align-items-center'
+							>
+								{/* Subtitle */}
+								<Col className='subtitle'>{aboutUs.sub_title}</Col>
+
+								{/* Title */}
+								<Col className='title text-capitalize'>{aboutUs.title}</Col>
+							</Row>
+						</Col>
+
+						{/* Description */}
+						<Col
+							className='description d-flex flex-column justify-content-center'
+							dangerouslySetInnerHTML={{ __html: aboutUs.description }}
+						></Col>
+					</Row>
+				</Container>
 			</Container>
 
 			{/* Services */}

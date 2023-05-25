@@ -11,6 +11,7 @@ import './HomePage.styles.css';
 
 // Components
 import MainSliderComponent from './../../components/MainSliderComponent/MainSliderComponent';
+import ServiceCardComponent from './../../components/ServiceCardComponent/ServiceCardComponent';
 
 const HomePage = () => {
 	// i18next
@@ -22,7 +23,7 @@ const HomePage = () => {
 	}, [lang]);
 
 	// Redux
-	const { sliders, aboutUs } = useSelector((state) => state.homeData);
+	const { sliders, aboutUs, services } = useSelector((state) => state.homeData);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -74,14 +75,18 @@ const HomePage = () => {
 			</Container>
 
 			{/* Services */}
-			<Container
-				fluid
-				className='text-bg-secondary d-flex justify-content-center align-items-center'
-				style={{
-					minHeight: '50vh',
-				}}
-			>
-				Services
+			<Container fluid className='services-section'>
+				<Container>
+					<Row xs={1} sm={2} lg={3} className='g-4'>
+						{services
+							.filter((_, index) => index < 3)
+							.map((service, index) => (
+								<Col key={index}>
+									<ServiceCardComponent service={service} index={index + 1} />
+								</Col>
+							))}
+					</Row>
+				</Container>
 			</Container>
 
 			{/* Summary Section */}

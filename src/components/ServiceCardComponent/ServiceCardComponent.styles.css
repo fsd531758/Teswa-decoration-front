@@ -1,0 +1,51 @@
+/* Card Container */
+.service-card-component {
+	cursor: default;
+}
+
+.service-card-component .service-card-container {
+	border: none !important;
+	height: 16rem;
+}
+
+/* Counter */
+.service-card-component .counter {
+	position: relative;
+	top: 0;
+	direction: ltr !important;
+	color: rgba(var(--action-color), 1);
+	font-size: 3rem;
+
+	transition: top var(--transition-duration);
+}
+
+.service-card-component:hover .counter {
+	top: -1rem;
+}
+
+/* Title */
+.service-card-component .title {
+	color: rgba(var(--text-color), 1);
+	font-size: 1.5rem;
+	margin: 1rem 0;
+
+	transition: color var(--transition-duration);
+}
+
+.service-card-component:hover .title {
+	color: rgba(var(--action-color), 1);
+}
+
+/* Description */
+.service-card-component .description {
+	color: rgba(var(--text-color), 0.5);
+}
+
+.service-card-component .description * {
+	margin: 0;
+	padding: 0;
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */

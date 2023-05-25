@@ -14,7 +14,12 @@ import './PartnersComponent.styles.css';
 
 // Components
 
-const PartnersComponent = ({ sliders, direction, title, isSlider }) => {
+const PartnersComponent = ({
+	sliders = [],
+	direction = '',
+	title = '',
+	isSlider = false,
+}) => {
 	// i18next
 	const { lang } = useParams();
 	const { i18n } = useTranslation();
@@ -33,9 +38,11 @@ const PartnersComponent = ({ sliders, direction, title, isSlider }) => {
 			>
 				<Row xs={1} className='g-4'>
 					{/* Section Title */}
-					<Fade direction='down' delay={10}>
-						<Col className='title text-capitalize text-center'>{title}</Col>
-					</Fade>
+					{title && (
+						<Fade direction='down' delay={10}>
+							<Col className='title text-capitalize text-center'>{title}</Col>
+						</Fade>
+					)}
 
 					{/* Main Content */}
 					<Col>

@@ -11,6 +11,7 @@ import './HomePage.styles.css';
 
 // Components
 import MainSliderComponent from './../../components/MainSliderComponent/MainSliderComponent';
+import PartnersComponent from './../../components/PartnersComponent/PartnersComponent';
 import ServiceCardComponent from './../../components/ServiceCardComponent/ServiceCardComponent';
 
 const HomePage = () => {
@@ -23,7 +24,9 @@ const HomePage = () => {
 	}, [lang]);
 
 	// Redux
-	const { sliders, aboutUs, services } = useSelector((state) => state.homeData);
+	const { sliders, aboutUs, services, partners } = useSelector(
+		(state) => state.homeData
+	);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -112,14 +115,14 @@ const HomePage = () => {
 			</Container>
 
 			{/* Partners */}
-			<Container
-				fluid
-				className='text-bg-primary d-flex justify-content-center align-items-center'
-				style={{
-					minHeight: '50vh',
-				}}
-			>
-				Partners
+			<Container fluid className='partners-section px-0'>
+				<Container>
+					<PartnersComponent
+						direction={lang === 'en' ? 'right' : 'left'}
+						isSlider={true}
+						sliders={partners}
+					/>
+				</Container>
 			</Container>
 
 			{/* Trending Products Slider */}

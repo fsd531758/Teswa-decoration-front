@@ -5,10 +5,9 @@ import { useLocation, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
-// Images
-import CategoryImage from './../../assets/images/logos/logo.png';
-
 // Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSectionCategories } from './../../store/reducers/sections.reducer';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -20,10 +19,11 @@ import './CategoriesPage.styles.css';
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import CategoryCardComponent from './../../components/CategoryCardComponent/CategoryCardComponent';
+import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
 
 const CategoriesPage = () => {
 	// i18next
-	const { lang } = useParams();
+	const { lang, section_id } = useParams();
 	const { t, i18n } = useTranslation();
 	useEffect(() => {
 		i18n.changeLanguage(lang ?? 'ar');
@@ -50,6 +50,21 @@ const CategoriesPage = () => {
 	];
 
 	// Redux
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			fetchSectionCategories({
+				language: lang,
+				searchParams: { id: section_id },
+			})
+		);
+		// eslint-disable-next-line
+	}, [lang, section_id]);
+
+	const {
+		sectionCategories: { title, categories },
+		isSectionCategoriesLoading,
+	} = useSelector((state) => state.sections);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -60,55 +75,9 @@ const CategoriesPage = () => {
 		});
 	}, [lang]);
 
-	const categories = [
-		{
-			id: 1,
-			title: lang === 'en' ? 'category 1' : 'الفئة 1',
-			image: CategoryImage,
-			section: {
-				id: 1,
-				title: lang === 'en' ? 'section 1' : 'القسم 1',
-			},
-		},
-		{
-			id: 2,
-			title: lang === 'en' ? 'category 2' : 'الفئة 2',
-			image: CategoryImage,
-			section: {
-				id: 1,
-				title: lang === 'en' ? 'section 1' : 'القسم 1',
-			},
-		},
-		{
-			id: 3,
-			title: lang === 'en' ? 'category 3' : 'الفئة 3',
-			image: CategoryImage,
-			section: {
-				id: 2,
-				title: lang === 'en' ? 'section 2' : 'القسم 2',
-			},
-		},
-		{
-			id: 4,
-			title: lang === 'en' ? 'category 4' : 'الفئة 4',
-			image: CategoryImage,
-			section: {
-				id: 3,
-				title: lang === 'en' ? 'section 3' : 'القسم 3',
-			},
-		},
-		{
-			id: 5,
-			title: lang === 'en' ? 'category 5' : 'الفئة 5',
-			image: CategoryImage,
-			section: {
-				id: 2,
-				title: lang === 'en' ? 'section 2' : 'القسم 2',
-			},
-		},
-	];
-
-	return (
+	return isSectionCategoriesLoading ? (
+		<LoadingComponent />
+	) : (
 		<Container
 			fluid
 			lang={lang ?? 'ar'}
@@ -120,10 +89,7 @@ const CategoriesPage = () => {
 			}}
 		>
 			{/* Breadcrumb */}
-			<BreadcrumbComponent
-				title={t('words:breadcrumb.sectionName')}
-				items={breadcrumbItems}
-			/>
+			<BreadcrumbComponent title={title} items={breadcrumbItems} />
 
 			{/* Content */}
 			<Container>
@@ -149,7 +115,6 @@ const CategoriesPage = () => {
 						/>
 					</Col>
 				</Row>
-
 				<Row className='g-4'>
 					{categories.length > 0 ? (
 						categories.map((category, index) => (

@@ -12,7 +12,7 @@ import './CategoryCardComponent.styles.css';
 
 const CategoryCardComponent = ({ category }) => {
 	// i18next
-	const { lang } = useParams();
+	const { lang, section_id } = useParams();
 	const { i18n } = useTranslation();
 	useEffect(() => {
 		i18n.changeLanguage(lang ?? 'ar');
@@ -26,19 +26,15 @@ const CategoryCardComponent = ({ category }) => {
 			fluid
 			className='category-card-component'
 		>
-			<Link
-				to={`/${lang}/sections/${category.section.id}/categories/${category.id}`}
-			>
+			<Link to={`/${lang}/sections/${section_id}/categories/${category.id}`}>
 				<Card className='h-100'>
 					<Card.Img
 						fluid='true'
-						src={
-							category.image ?? require('./../../assets/images/logos/logo.png')
-						}
+						src={category.image}
 						alt='category card image'
 						className='text-capitalize w-100 h-100'
 						style={{
-							objectFit: 'contain',
+							objectFit: 'fill',
 							objectPosition: 'center',
 						}}
 						onError={({ currentTarget }) => {

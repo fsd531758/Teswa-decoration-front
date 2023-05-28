@@ -10,6 +10,10 @@
 /* Image */
 .category-card-component img {
 	background-color: rgba(var(--primary-color), 0.1);
+	background-image: url('./../../assets/images/logos/logo.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 /* Text Container */

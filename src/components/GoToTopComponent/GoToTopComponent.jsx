@@ -48,15 +48,7 @@ const GoToTopComponent = () => {
 				})
 			}
 		>
-			<ButtonComponent
-				icon={<FaAngleDoubleUp size={20} />}
-				styles={{
-					button: {
-						'--hover-bg-color': '#383633',
-						'--hover-title-color': '#eae9e5',
-					},
-				}}
-			/>
+			<ButtonComponent icon={<FaAngleDoubleUp size={20} />} />
 		</Container>
 	);
 };

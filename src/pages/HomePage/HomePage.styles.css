@@ -37,6 +37,58 @@
 }
 
 /* ******************************************************************************** */
+/* **************************   Services Section   ******************************** */
+/* ******************************************************************************** */
+#home-page .experience-section {
+	--skew-value: 4deg;
+	--translate-y-value: -10%;
+	padding-top: 6rem;
+	padding-bottom: 6rem;
+	min-height: 80vh;
+	color: rgba(255, 255, 255, 1);
+}
+
+/* Background Effect */
+#home-page .experience-section::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 90%;
+	background-color: rgba(var(--text-color), 1);
+	transform: skewY(calc(-1 * var(--skew-value)))
+		translate(0, var(--translate-y-value));
+	z-index: -1;
+}
+
+/* Subtitle */
+#home-page .experience-section .subtitle {
+	color: rgba(var(--action-color), 1);
+	font-size: 1.5rem;
+}
+
+/* Title */
+#home-page .experience-section .title {
+	font-size: 2.5rem;
+}
+
+/* Description */
+#home-page .experience-section .description {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+#home-page .experience-section .description * {
+	margin: 0;
+	padding: 0;
+}
+
+/* Image */
+#home-page .experience-section img {
+	max-height: 28rem;
+}
+
+/* ******************************************************************************** */
 /* **************************   Partners Section   ******************************** */
 /* ******************************************************************************** */
 #home-page .partners-section {
@@ -47,3 +99,10 @@
 /* ******************************************************************************** */
 /* **********************************   RTL   ************************************* */
 /* ******************************************************************************** */
+/* Experience Section */
+[lang='ar'] #home-page .experience-section::before {
+	transform: skewY(var(--skew-value)) translate(0, var(--translate-y-value));
+}
+[lang='ar'] #home-page .experience-section img {
+	transform: scaleX(-1);
+}

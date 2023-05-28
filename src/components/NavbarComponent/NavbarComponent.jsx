@@ -45,6 +45,7 @@ const NavbarComponent = () => {
 	const {
 		settings: { logo },
 	} = useSelector((state) => state.settingsData);
+	const { sections } = useSelector((state) => state.sections);
 
 	// Navbar Handlers
 	const toggleNavbar = () => {
@@ -102,23 +103,23 @@ const NavbarComponent = () => {
 		},
 	];
 
-	const sections = [
-		{
-			id: 1,
-			title: lang === 'en' ? 'section 1' : 'القسم 1',
-			categories: categories.filter((category) => category.section.id === 1),
-		},
-		{
-			id: 2,
-			title: lang === 'en' ? 'section 2' : 'القسم 2',
-			categories: categories.filter((category) => category.section.id === 2),
-		},
-		{
-			id: 3,
-			title: lang === 'en' ? 'section 3' : 'القسم 3',
-			categories: categories.filter((category) => category.section.id === 3),
-		},
-	];
+	// const sections = [
+	// 	{
+	// 		id: 1,
+	// 		title: lang === 'en' ? 'section 1' : 'القسم 1',
+	// 		categories: categories.filter((category) => category.section.id === 1),
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		title: lang === 'en' ? 'section 2' : 'القسم 2',
+	// 		categories: categories.filter((category) => category.section.id === 2),
+	// 	},
+	// 	{
+	// 		id: 3,
+	// 		title: lang === 'en' ? 'section 3' : 'القسم 3',
+	// 		categories: categories.filter((category) => category.section.id === 3),
+	// 	},
+	// ];
 
 	return (
 		<Navbar

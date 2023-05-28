@@ -20,6 +20,23 @@
 	transition: opacity calc(1.5 * var(--transition-duration));
 }
 
+#go-to-top .btn {
+	border-radius: 3rem !important;
+	background-color: rgba(255, 255, 255, 1) !important;
+}
+
+#go-to-top .btn:hover {
+	background-color: rgba(var(--action-color), 1) !important;
+}
+
+#go-to-top .btn * {
+	color: rgba(var(--action-color), 1) !important;
+}
+
+#go-to-top .btn:hover * {
+	color: rgba(var(--primary-color), 1) !important;
+}
+
 @keyframes go-to-top-bounce {
 	0% {
 		-webkit-transform: translateY(-4px);

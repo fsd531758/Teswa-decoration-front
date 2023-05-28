@@ -8,10 +8,7 @@ export const fetchSections = createAsyncThunk(
 		return await axios({
 			method: 'GET',
 			baseURL: BASE_URL.demo,
-			url: '/projects',
-			params: {
-				id: searchParams?.id,
-			},
+			url: '/sections',
 			headers: {
 				locale: language,
 			},

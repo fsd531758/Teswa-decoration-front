@@ -1,0 +1,54 @@
+.contact-info-component .text-container .title {
+	color: rgba(var(--text-color), 1);
+}
+
+/* Social Media Accounts */
+.contact-info-component .text-container li {
+	list-style: none;
+	font-weight: bold;
+}
+
+.contact-info-component .list-group-item {
+	border: none !important;
+	border-radius: 0.5rem !important;
+	background-color: transparent !important;
+}
+
+.contact-info-component .list-group-item:not(:last-of-type) {
+	margin-right: 0.5rem;
+}
+
+.contact-info-component .social-accounts * {
+	color: rgba(var(--text-color), 0.5);
+
+	transition-property: border-color, color, transform;
+	transition-duration: 250ms;
+}
+
+.contact-info-component .social-accounts > * * {
+	transform: translateY(0);
+	animation: none;
+}
+
+.contact-info-component .social-accounts > *:hover * {
+	color: var(--icon-color) !important;
+	animation: hover 1000ms infinite alternate ease-in-out;
+}
+
+@keyframes hover {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(-0.3rem);
+	}
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
+[dir='rtl'] .contact-info-component .list-group-item:not(:last-of-type) {
+	margin-right: 0;
+	margin-left: 0.5rem;
+}

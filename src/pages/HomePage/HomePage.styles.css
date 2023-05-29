@@ -182,6 +182,20 @@
 }
 
 /* ******************************************************************************** */
+/* ***************************   Contact Us Section   ***************************** */
+/* ******************************************************************************** */
+/* Contact Form */
+#home-page .contact-us-section .contact-form-component {
+	padding-right: 2rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+	#home-page .contact-us-section .contact-form-component {
+		padding-right: unset !important;
+	}
+}
+
+/* ******************************************************************************** */
 /* **********************************   RTL   ************************************* */
 /* ******************************************************************************** */
 /* Experience Section */
@@ -202,4 +216,16 @@
 /* Trending Products Section */
 [lang='ar'] #home-page .trending-products-section::before {
 	transform: skewY(var(--skew-value)) translate(0, var(--translate-y-value));
+}
+
+/* Contact Us Section */
+[lang='ar'] #home-page .contact-us-section .contact-form-component {
+	padding-right: unset !important;
+	padding-left: 2rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+	[lang='ar'] #home-page .contact-us-section .contact-form-component {
+		padding-left: unset !important;
+	}
 }

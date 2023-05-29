@@ -13,6 +13,8 @@ import './HomePage.styles.css';
 // Components
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import CardsSliderComponent from './../../components/CardsSliderComponent/CardsSliderComponent';
+import ContactFormComponent from './../../components/ContactFormComponent/ContactFormComponent';
+import ContactInfoComponent from './../../components/ContactInfoComponent/ContactInfoComponent';
 import MainSliderComponent from './../../components/MainSliderComponent/MainSliderComponent';
 import PartnersComponent from './../../components/PartnersComponent/PartnersComponent';
 import ProductCardComponent from './../../components/ProductCardComponent/ProductCardComponent';
@@ -420,14 +422,30 @@ const HomePage = () => {
 			</Container>
 
 			{/* Contact Section */}
-			<Container
-				fluid
-				className='text-bg-success d-flex justify-content-center align-items-center'
-				style={{
-					minHeight: '50vh',
-				}}
-			>
-				Contact Section
+			<Container fluid className='contact-us-section'>
+				<Container>
+					<Row xs={1} md={2} className='g-4'>
+						{/* Contact Form Container */}
+						<Col className='d-flex flex-column'>
+							<Fade direction='down' delay={40}>
+								<Col className='section-title'>{t('words:contactUs')}</Col>
+							</Fade>
+
+							{/* Contact Form */}
+							<ContactFormComponent />
+						</Col>
+
+						{/* Contact Details Container */}
+						<Col className='d-flex flex-column'>
+							<Fade direction='down' delay={40}>
+								<Col className='section-title'>{t('words:contactInfo')}</Col>
+							</Fade>
+
+							{/* Contact Details */}
+							<ContactInfoComponent />
+						</Col>
+					</Row>
+				</Container>
 			</Container>
 		</Container>
 	);

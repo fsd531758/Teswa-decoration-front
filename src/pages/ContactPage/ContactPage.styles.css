@@ -1,3 +1,30 @@
+/* Map Iframe */
+#contact-us-page iframe {
+	width: 100% !important;
+	height: 24rem !important;
+}
+
+/* Contact Form */
+#contact-us-page .contact-form-component {
+	padding-right: 2rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+	#contact-us-page .contact-form-component {
+		padding-right: unset !important;
+	}
+}
+
 /* ******************************************************************************** */
 /* **********************************   RTL   ************************************* */
 /* ******************************************************************************** */
+[lang='ar'] #contact-us-page .contact-form-component {
+	padding-right: unset !important;
+	padding-left: 2rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+	[lang='ar'] #contact-us-page .contact-form-component {
+		padding-left: unset !important;
+	}
+}

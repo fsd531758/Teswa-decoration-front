@@ -1,13 +1,12 @@
-import axios from 'axios';
-import React, { useEffect, useRef } from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Fade } from 'react-awesome-reveal';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { object, string } from 'yup';
-import { BASE_URL } from './../../helpers/general';
+import { fixGoogleMaps } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
 // Redux
+import { useSelector } from 'react-redux';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -17,6 +16,8 @@ import './ContactPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import ContactFormComponent from './../../components/ContactFormComponent/ContactFormComponent';
+import ContactInfoComponent from './../../components/ContactInfoComponent/ContactInfoComponent';
 
 const ContactPage = () => {
 	// i18next
@@ -41,126 +42,9 @@ const ContactPage = () => {
 	];
 
 	// Redux
-
-	// Refs
-	const firstNameRef = useRef(null);
-	const lastNameRef = useRef(null);
-	const emailRef = useRef(null);
-	const phoneRef = useRef(null);
-	const messageRef = useRef(null);
-
-	// Schema
-	const contactSchema = object().shape({
-		fname: string()
-			.min(2, t('validations:firstName.min', { min: 2 }))
-			.max(100, t('validations:firstName.max', { max: 100 }))
-			.required(t('validations:firstName.required')),
-		lname: string()
-			.min(2, t('validations:lastName.min', { min: 2 }))
-			.max(100, t('validations:lastName.max', { max: 100 }))
-			.required(t('validations:lastName.required')),
-		email: string()
-			.email(t('validations:email.format'))
-			.required(t('validations:email.required')),
-		phone: string()
-			.min(6, t('validations:phone.min', { min: 6 }))
-			.matches(/^[0-9+]+/, t('validations:phone.format'))
-			.required(t('validations:phone.required')),
-		message: string()
-			.min(2, t('validations:message.min', { min: 2 }))
-			.max(500, t('validations:message.max', { max: 500 }))
-			.required(t('validations:message.required')),
-	});
-
-	// Handle Form Errors
-	const displayErrors = (fieldName) => {
-		switch (fieldName) {
-			case 'fname':
-				firstNameRef.current.classList.add('is-invalid');
-				break;
-
-			case 'lname':
-				lastNameRef.current.classList.add('is-invalid');
-				break;
-
-			case 'email':
-				emailRef.current.classList.add('is-invalid');
-				break;
-
-			case 'phone':
-				phoneRef.current.classList.add('is-invalid');
-				break;
-
-			case 'message':
-				messageRef.current.classList.add('is-invalid');
-				break;
-
-			default:
-				break;
-		}
-	};
-
-	// Display Form Errors
-	const displayToast = (statusCode, message) => {
-		switch (statusCode) {
-			case 200:
-				toast.success(message, {
-					toastId: message,
-				});
-				break;
-			case 400:
-				toast.error(message, {
-					toastId: message,
-				});
-				break;
-			default:
-				toast.error(t('sentences:errors.default'));
-				break;
-		}
-	};
-
-	const submitContactForm = async (
-		values,
-		setSubmitting,
-		resetForm,
-		language = 'ar'
-	) => {
-		axios({
-			method: 'POST',
-			baseURL: BASE_URL.demo,
-			url: '/contact',
-			data: {
-				fname: values.fname,
-				lname: values.lname,
-				email: values.email,
-				phone: values.phone,
-				message: values.message,
-			},
-			headers: { locale: language, 'Content-Type': 'multipart/form-data' },
-		})
-			.then((response) => {
-				// reset submitting
-				setSubmitting(false);
-				resetForm(true);
-
-				displayToast(response.status, response.data.message);
-			})
-			.catch((error) => {
-				// reset submitting
-				setSubmitting(false);
-				if (error.response.data.data !== {}) {
-					Object.keys(error.response.data.data).forEach((key) => {
-						displayErrors(key);
-						displayToast(
-							error.response.status,
-							error.response.data.data[key][0]
-						);
-					});
-				} else {
-					displayToast(error.response.status, error.response.data.message);
-				}
-			});
-	};
+	const {
+		settings: { map },
+	} = useSelector((state) => state.settingsData);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -189,7 +73,40 @@ const ContactPage = () => {
 			/>
 
 			{/* Content */}
-			<Container>ContactPage</Container>
+			<Container>
+				<Row xs={1} md={2} className='g-4'>
+					{/* Contact Form Container */}
+					<Col className='d-flex flex-column'>
+						<Fade direction='down' delay={40}>
+							<Col className='section-title'>{t('words:contactUs')}</Col>
+						</Fade>
+
+						{/* Contact Form */}
+						<ContactFormComponent />
+					</Col>
+
+					{/* Contact Details Container */}
+					<Col className='d-flex flex-column'>
+						<Fade direction='down' delay={40}>
+							<Col className='section-title'>{t('words:contactInfo')}</Col>
+						</Fade>
+
+						{/* Contact Details */}
+						<ContactInfoComponent />
+					</Col>
+				</Row>
+
+				{/* Map */}
+				<Row xs={1} className='mt-4 g-3 overflow-hidden'>
+					<Fade direction='down' delay='30'>
+						<Col
+							dangerouslySetInnerHTML={{
+								__html: fixGoogleMaps(map),
+							}}
+						></Col>
+					</Fade>
+				</Row>
+			</Container>
 		</Container>
 	);
 };

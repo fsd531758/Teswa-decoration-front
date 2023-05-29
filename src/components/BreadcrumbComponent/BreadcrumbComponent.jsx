@@ -38,8 +38,7 @@ const BreadcrumbComponent = ({
 			className='mb-5'
 			style={{
 				'--image-url': `url(${
-					require('./../../assets/images/breadcrumb/01.jpg') ??
-					require('./../../assets/images/logos/logo.png')
+					breadcrumb ?? require('./../../assets/images/logos/logo.png')
 				})`,
 			}}
 		>

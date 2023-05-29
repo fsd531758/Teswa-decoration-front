@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Fade } from 'react-awesome-reveal';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from '../../helpers/general';
 import { routes } from '../../routes/index.routes';
 
 // Redux
+import { useSelector } from 'react-redux';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -13,6 +15,7 @@ import './ServicesPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import ServiceCardComponent from './../../components/ServiceCardComponent/ServiceCardComponent';
 
 const ServicesPage = () => {
 	// i18next
@@ -41,6 +44,7 @@ const ServicesPage = () => {
 	];
 
 	// Redux
+	const { services } = useSelector((state) => state.homeData);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -69,7 +73,17 @@ const ServicesPage = () => {
 			/>
 
 			{/* Content */}
-			<Container>ServicesPage</Container>
+			<Container>
+				<Row xs={1} sm={2} lg={3} className='g-4'>
+					{services.map((service, index) => (
+						<Fade key={index} direction='up' delay={40 + index * 100}>
+							<Col>
+								<ServiceCardComponent service={service} index={index + 1} />
+							</Col>
+						</Fade>
+					))}
+				</Row>
+			</Container>
 		</Container>
 	);
 };

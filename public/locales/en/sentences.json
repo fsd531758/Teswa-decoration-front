@@ -4,7 +4,11 @@
 	"joinNewsletter": "join newsletter",
 
 	"pages": {
-		"productsFilter": "awesome furniture design"
+		"productsFilter": "awesome furniture design",
+		"trendingProducts": {
+			"title": "delivering worldwide trending products",
+			"subtitle": "comprehensive range of products."
+		}
 	},
 
 	"errors": {

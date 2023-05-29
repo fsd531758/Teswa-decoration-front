@@ -70,13 +70,13 @@ const HomePage = () => {
 	};
 
 	// Scroll To Top On Initial Render
-	// useEffect(() => {
-	// 	window.scrollTo({
-	// 		top: 0,
-	// 		left: 0,
-	// 		behavior: 'smooth',
-	// 	});
-	// }, [lang]);
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'smooth',
+		});
+	}, [lang]);
 
 	return (
 		<Container
@@ -103,10 +103,10 @@ const HomePage = () => {
 									className='d-flex flex-column justify-content-center align-items-center'
 								>
 									{/* Subtitle */}
-									<Col className='subtitle'>{aboutUs.sub_title}</Col>
+									<Col className='section-subtitle'>{aboutUs.sub_title}</Col>
 
 									{/* Title */}
-									<Col className='title text-capitalize'>{aboutUs.title}</Col>
+									<Col className='section-title'>{aboutUs.title}</Col>
 								</Row>
 							</Col>
 						</Fade>
@@ -149,14 +149,14 @@ const HomePage = () => {
 					<Row xs={1} md={2} className='text-container mb-4 g-4'>
 						{/* Title */}
 						<Fade direction={lang === 'en' ? 'left' : 'right'} delay={20}>
-							<Col className='title text-capitalize'>{experience.title}</Col>
+							<Col className='section-title'>{experience.title}</Col>
 						</Fade>
 
 						{/* Subtitle & Description Container */}
 						<Fade direction='down' delay={20}>
 							<Col>
 								<Row xs={1} className='g-1 text-center'>
-									<Col className='subtitle text-capitalize'>
+									<Col className='section-subtitle text-capitalize'>
 										{experience.sub_title}
 									</Col>
 									<Col
@@ -235,95 +235,107 @@ const HomePage = () => {
 				<Container>
 					<Row xs={1} className='g-4'>
 						{/* Section Title */}
-						<Col className='title text-capitalize'>
-							{t('sentences:pages.productsFilter')}
-						</Col>
+						<Fade direction='down' delay={60}>
+							<Col className='section-title'>
+								{t('sentences:pages.productsFilter')}
+							</Col>
+						</Fade>
 
 						{/* Categories Filter */}
-						<Col className='categories-filter'>
-							<Nav
-								activeKey={activeCategory.id}
-								onSelect={(selectedKey) => {
-									setActiveCategory(() => {
-										if (+selectedKey === -1) {
-											return { id: -1, title: t('words:allCategories') };
-										} else {
-											return categories.filter(
-												(category) => +category.id === +selectedKey
-											)[0];
-										}
-									});
-									setFilteredProducts(null);
-									setTimeout(() => {
-										setFilteredProducts(filterByCategory(selectedKey));
-									}, 100);
-								}}
-							>
-								<Nav.Item>
-									<Nav.Link eventKey={-1} className='text-capitalize'>
-										{t('words:allCategories')}
-									</Nav.Link>
-								</Nav.Item>
-
-								{categories.map((category, index) => (
-									<Nav.Item key={index}>
-										<Nav.Link
-											eventKey={category.id}
-											className='text-capitalize'
-										>
-											{category.title}
+						<Fade direction='up' delay={60}>
+							<Col className='categories-filter'>
+								<Nav
+									activeKey={activeCategory.id}
+									onSelect={(selectedKey) => {
+										setActiveCategory(() => {
+											if (+selectedKey === -1) {
+												return { id: -1, title: t('words:allCategories') };
+											} else {
+												return categories.filter(
+													(category) => +category.id === +selectedKey
+												)[0];
+											}
+										});
+										setFilteredProducts(null);
+										setTimeout(() => {
+											setFilteredProducts(filterByCategory(selectedKey));
+										}, 100);
+									}}
+								>
+									<Nav.Item>
+										<Nav.Link eventKey={-1} className='text-capitalize'>
+											{t('words:allCategories')}
 										</Nav.Link>
 									</Nav.Item>
-								))}
-							</Nav>
-						</Col>
+
+									{categories.map((category, index) => (
+										<Nav.Item key={index}>
+											<Nav.Link
+												eventKey={category.id}
+												className='text-capitalize'
+											>
+												{category.title}
+											</Nav.Link>
+										</Nav.Item>
+									))}
+								</Nav>
+							</Col>
+						</Fade>
 					</Row>
 
 					{/* Filtered Products */}
 					{filteredProducts && (
 						<>
-							<Row
-								xs={1}
-								md={filteredProducts.length > 0 ? 2 : 1}
-								lg={
-									filteredProducts.length > 0
-										? activeCategory.title === t('words:allCategories')
-											? 3
-											: 2
-										: 1
-								}
-								className='g-4 overflow-hidden'
-							>
-								{filteredProducts.length > 0 ? (
-									+activeCategory.id === -1 ? (
-										<Col xs={12} md={12} lg={12}>
-											<CardsSliderComponent
-												sliders={filteredProducts.map((product, index) => (
-													<ProductCardComponent key={index} product={product} />
-												))}
-											/>
-										</Col>
+							<Fade delay={100}>
+								<Row
+									xs={1}
+									md={filteredProducts.length > 0 ? 2 : 1}
+									lg={
+										filteredProducts.length > 0
+											? activeCategory.title === t('words:allCategories')
+												? 3
+												: 2
+											: 1
+									}
+									className='g-4 overflow-hidden'
+								>
+									{filteredProducts.length > 0 ? (
+										+activeCategory.id === -1 ? (
+											<Col xs={12} md={12} lg={12}>
+												<CardsSliderComponent
+													sliders={filteredProducts.map((product, index) => (
+														<ProductCardComponent
+															key={index}
+															product={product}
+														/>
+													))}
+													isGridEnabled={true}
+													rowsCount={2}
+													isRewindEnabled={true}
+												/>
+											</Col>
+										) : (
+											filteredProducts
+												.filter((_, index) => index < 4)
+												.map((product, index) => (
+													<Fade key={index} direction='up' delay={index * 100}>
+														<Col>
+															<ProductCardComponent product={product} />
+														</Col>
+													</Fade>
+												))
+										)
 									) : (
-										filteredProducts
-											.filter((_, index) => index < 4)
-											.map((product, index) => (
-												<Fade key={index} direction='up' delay={index * 100}>
-													<Col>
-														<ProductCardComponent product={product} />
-													</Col>
-												</Fade>
-											))
-									)
-								) : (
-									<Fade direction='up' delay={20}>
-										<Col xs={12} className='error'>
-											{t('sentences:errors.noData', {
-												title: t('words:errors.products'),
-											})}
-										</Col>
-									</Fade>
-								)}
-							</Row>
+										<Fade direction='up' delay={20}>
+											<Col xs={12} className='error'>
+												{t('sentences:errors.noData', {
+													title: t('words:errors.products'),
+												})}
+											</Col>
+										</Fade>
+									)}
+								</Row>
+							</Fade>
 
 							{/* See More Button */}
 							{activeCategory.id !== -1 && filteredProducts.length > 4 && (
@@ -344,25 +356,59 @@ const HomePage = () => {
 			</Container>
 
 			{/* Partners */}
-			<Container fluid className='partners-section px-0'>
+			<Container fluid className='partners-section px-0 overflow-hidden'>
 				<Container>
-					<PartnersComponent
-						direction={lang === 'en' ? 'right' : 'left'}
-						isSlider={true}
-						sliders={partners}
-					/>
+					<Fade delay={100}>
+						<PartnersComponent
+							direction={lang === 'en' ? 'right' : 'left'}
+							isSlider={true}
+							sliders={partners}
+						/>
+					</Fade>
 				</Container>
 			</Container>
 
 			{/* Trending Products Slider */}
 			<Container
 				fluid
-				className='text-bg-warning d-flex justify-content-center align-items-center'
-				style={{
-					minHeight: '50vh',
-				}}
+				className='trending-products-section position-relative px-0 overflow-hidden'
 			>
-				Trending Products Slider
+				<Container>
+					<Row xs={1} className='g-4'>
+						{/* Title & Subtitle Container */}
+						<Col className='header-container'>
+							<Row
+								xs={1}
+								className='d-flex flex-column justify-content-center align-items-center overflow-hidden'
+							>
+								{/* Subtitle */}
+								<Fade direction='down' delay={40}>
+									<Col className='section-subtitle text-center'>
+										{t('sentences:pages.trendingProducts.subtitle')}
+									</Col>
+								</Fade>
+
+								{/* Title */}
+								<Fade direction='up' delay={40}>
+									<Col className='section-title text-center'>
+										{t('sentences:pages.trendingProducts.title')}
+									</Col>
+								</Fade>
+							</Row>
+						</Col>
+
+						{/* Trending Products */}
+						<Col className='products-container'>
+							<Fade delay={100}>
+								<CardsSliderComponent
+									sliders={products.map((product, index) => (
+										<ProductCardComponent key={index} product={product} />
+									))}
+								/>
+							</Fade>
+						</Col>
+					</Row>
+				</Container>
 			</Container>
 
 			{/* Contact Section */}

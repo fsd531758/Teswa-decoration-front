@@ -19,8 +19,6 @@ const ProductCardComponent = ({ product }) => {
 		// eslint-disable-next-line
 	}, [lang]);
 
-	console.log(product);
-
 	return (
 		<Container
 			lang={lang ?? 'ar'}

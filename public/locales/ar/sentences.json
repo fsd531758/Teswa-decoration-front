@@ -4,7 +4,11 @@
 	"joinNewsletter": "انضم للقائمة البريدية",
 
 	"pages": {
-		"productsFilter": "تصاميم رائعة"
+		"productsFilter": "تصاميم رائعة",
+		"trendingProducts": {
+			"title": "تقديم منتجات رائجة في جميع أنحاء العالم",
+			"subtitle": "مجموعة شاملة من المنتجات."
+		}
 	},
 
 	"errors": {

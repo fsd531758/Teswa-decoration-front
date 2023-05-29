@@ -12,7 +12,12 @@ import 'swiper/css';
 import 'swiper/css/grid';
 import './CardsSliderComponent.styles.css';
 
-const CardsSliderComponent = ({ sliders }) => {
+const CardsSliderComponent = ({
+	sliders,
+	isGridEnabled = false,
+	rowsCount = 1,
+	isRewindEnabled = false,
+}) => {
 	// i18next
 	const { lang } = useParams();
 	const { i18n } = useTranslation();
@@ -34,7 +39,8 @@ const CardsSliderComponent = ({ sliders }) => {
 							slidesPerView={1}
 							spaceBetween={10}
 							grid={{
-								rows: 2,
+								enabled: isGridEnabled,
+								rows: rowsCount,
 								fill: 'row',
 							}}
 							autoplay={{
@@ -42,8 +48,8 @@ const CardsSliderComponent = ({ sliders }) => {
 								disableOnInteraction: false,
 								pauseOnMouseEnter: true,
 							}}
-							rewind={true}
-							// loop={true}
+							rewind={isRewindEnabled}
+							loop={!isRewindEnabled}
 							breakpoints={{
 								576: {
 									slidesPerView: 2,

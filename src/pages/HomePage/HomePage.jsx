@@ -48,8 +48,16 @@ const HomePage = () => {
 	}, []);
 
 	// Redux
-	const { sliders, aboutUs, services, experience, experienceData, partners } =
-		useSelector((state) => state.homeData);
+	const {
+		sliders,
+		aboutUs,
+		services,
+		experience,
+		experienceData,
+		partners,
+		trendingProducts,
+		trendingProductsData,
+	} = useSelector((state) => state.homeData);
 	const { categories } = useSelector((state) => state.categories);
 	const { products } = useSelector((state) => state.products);
 
@@ -384,14 +392,14 @@ const HomePage = () => {
 								{/* Subtitle */}
 								<Fade direction='down' delay={40}>
 									<Col className='section-subtitle text-center'>
-										{t('sentences:pages.trendingProducts.subtitle')}
+										{trendingProducts.sub_title}
 									</Col>
 								</Fade>
 
 								{/* Title */}
 								<Fade direction='up' delay={40}>
 									<Col className='section-title text-center'>
-										{t('sentences:pages.trendingProducts.title')}
+										{trendingProducts.title}
 									</Col>
 								</Fade>
 							</Row>
@@ -401,7 +409,7 @@ const HomePage = () => {
 						<Col className='products-container'>
 							<Fade delay={100}>
 								<CardsSliderComponent
-									sliders={products.map((product, index) => (
+									sliders={trendingProductsData.map((product, index) => (
 										<ProductCardComponent key={index} product={product} />
 									))}
 								/>

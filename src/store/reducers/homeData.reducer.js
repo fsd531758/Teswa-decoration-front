@@ -28,6 +28,8 @@ export const homeDataSlice = createSlice({
 		experience: {},
 		experienceData: [],
 		partners: [],
+		trendingProducts: {},
+		trendingProductsData: [],
 		isHomeDataLoading: true,
 	},
 	name: 'homeDataSlice',
@@ -58,6 +60,15 @@ export const homeDataSlice = createSlice({
 			state.experienceData = action.payload.experience.experiences;
 
 			state.partners = action.payload.partners;
+
+			// Extract Specific Keys From (trending_products) Object
+			state.trendingProducts = (({ id, title, sub_title }) => ({
+				id,
+				title,
+				sub_title,
+			}))(action.payload.trending_products);
+
+			state.trendingProductsData = action.payload.trending_products.products;
 
 			state.isHomeDataLoading = false;
 		});

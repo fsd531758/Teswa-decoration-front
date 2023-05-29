@@ -1,13 +1,11 @@
 {
 	"contactUsThroughWhatsapp": "whatsapp chat",
-	"findUs": "find us",
 	"contactUs": "contact us",
-	"startingPrice": "prices starts from {{price}}",
-	"ModelArea_zero": "no area available",
-	"ModelArea": "area: {{count}} meter square",
-	"ModelArea_other": "area: {{count}} meters square",
-	"requestModel": "model inquiry",
 	"joinNewsletter": "join newsletter",
+
+	"pages": {
+		"productsFilter": "awesome furniture design"
+	},
 
 	"errors": {
 		"404": "Oops! How did you get here!",

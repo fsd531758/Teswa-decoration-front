@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Fade } from 'react-awesome-reveal';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Fade, Zoom } from 'react-awesome-reveal';
+import { Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
@@ -12,8 +12,10 @@ import './HomePage.styles.css';
 
 // Components
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
+import CardsSliderComponent from './../../components/CardsSliderComponent/CardsSliderComponent';
 import MainSliderComponent from './../../components/MainSliderComponent/MainSliderComponent';
 import PartnersComponent from './../../components/PartnersComponent/PartnersComponent';
+import ProductCardComponent from './../../components/ProductCardComponent/ProductCardComponent';
 import ProgressBarComponent from './../../components/ProgressBarComponent/ProgressBarComponent';
 import ServiceCardComponent from './../../components/ServiceCardComponent/ServiceCardComponent';
 
@@ -48,15 +50,33 @@ const HomePage = () => {
 	// Redux
 	const { sliders, aboutUs, services, experience, experienceData, partners } =
 		useSelector((state) => state.homeData);
+	const { categories } = useSelector((state) => state.categories);
+	const { products } = useSelector((state) => state.products);
+
+	// Products Filter
+	const [activeCategory, setActiveCategory] = useState({
+		id: -1,
+		title: t('words:allCategories'),
+	});
+	const [filteredProducts, setFilteredProducts] = useState(products);
+	const filterByCategory = (selectedKey) => {
+		if (+selectedKey === -1) {
+			return products;
+		} else {
+			return products.filter(
+				(product) => +product.category.id === +selectedKey
+			);
+		}
+	};
 
 	// Scroll To Top On Initial Render
-	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: 'smooth',
-		});
-	}, [lang]);
+	// useEffect(() => {
+	// 	window.scrollTo({
+	// 		top: 0,
+	// 		left: 0,
+	// 		behavior: 'smooth',
+	// 	});
+	// }, [lang]);
 
 	return (
 		<Container
@@ -103,7 +123,7 @@ const HomePage = () => {
 			</Container>
 
 			{/* Services */}
-			<Container fluid className='services-section overflow-hidden'>
+			<Container fluid className='services-section px-0 overflow-hidden'>
 				<Container>
 					<Row xs={1} sm={2} lg={3} className='g-4'>
 						{services
@@ -209,12 +229,118 @@ const HomePage = () => {
 			{/* Products Filter */}
 			<Container
 				fluid
-				className='text-bg-dark d-flex justify-content-center align-items-center'
-				style={{
-					minHeight: '50vh',
-				}}
+				className='products-filter-section px-0 overflow-hidden'
+				style={{ minHeight: '50vh' }}
 			>
-				Products Filter
+				<Container>
+					<Row xs={1} className='g-4'>
+						{/* Section Title */}
+						<Col className='title text-capitalize'>
+							{t('sentences:pages.productsFilter')}
+						</Col>
+
+						{/* Categories Filter */}
+						<Col className='categories-filter'>
+							<Nav
+								activeKey={activeCategory.id}
+								onSelect={(selectedKey) => {
+									setActiveCategory(() => {
+										if (+selectedKey === -1) {
+											return { id: -1, title: t('words:allCategories') };
+										} else {
+											return categories.filter(
+												(category) => +category.id === +selectedKey
+											)[0];
+										}
+									});
+									setFilteredProducts(null);
+									setTimeout(() => {
+										setFilteredProducts(filterByCategory(selectedKey));
+									}, 100);
+								}}
+							>
+								<Nav.Item>
+									<Nav.Link eventKey={-1} className='text-capitalize'>
+										{t('words:allCategories')}
+									</Nav.Link>
+								</Nav.Item>
+
+								{categories.map((category, index) => (
+									<Nav.Item key={index}>
+										<Nav.Link
+											eventKey={category.id}
+											className='text-capitalize'
+										>
+											{category.title}
+										</Nav.Link>
+									</Nav.Item>
+								))}
+							</Nav>
+						</Col>
+					</Row>
+
+					{/* Filtered Products */}
+					{filteredProducts && (
+						<>
+							<Row
+								xs={1}
+								md={filteredProducts.length > 0 ? 2 : 1}
+								lg={
+									filteredProducts.length > 0
+										? activeCategory.title === t('words:allCategories')
+											? 3
+											: 2
+										: 1
+								}
+								className='g-4 overflow-hidden'
+							>
+								{filteredProducts.length > 0 ? (
+									+activeCategory.id === -1 ? (
+										<Col xs={12} md={12} lg={12}>
+											<CardsSliderComponent
+												sliders={filteredProducts.map((product, index) => (
+													<ProductCardComponent key={index} product={product} />
+												))}
+											/>
+										</Col>
+									) : (
+										filteredProducts
+											.filter((_, index) => index < 4)
+											.map((product, index) => (
+												<Fade key={index} direction='up' delay={index * 100}>
+													<Col>
+														<ProductCardComponent product={product} />
+													</Col>
+												</Fade>
+											))
+									)
+								) : (
+									<Fade direction='up' delay={20}>
+										<Col xs={12} className='error'>
+											{t('sentences:errors.noData', {
+												title: t('words:errors.products'),
+											})}
+										</Col>
+									</Fade>
+								)}
+							</Row>
+
+							{/* See More Button */}
+							{activeCategory.id !== -1 && filteredProducts.length > 4 && (
+								<Row className='mt-5'>
+									<Zoom delay={100}>
+										<Col className='d-flex justify-content-center align-items-center'>
+											<ButtonComponent
+												text={t('words:buttons.viewMore')}
+												link={`/sections/${activeCategory.section?.id}/categories/${activeCategory.id}`}
+											/>
+										</Col>
+									</Zoom>
+								</Row>
+							)}
+						</>
+					)}
+				</Container>
 			</Container>
 
 			{/* Partners */}

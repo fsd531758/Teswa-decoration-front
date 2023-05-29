@@ -76,17 +76,17 @@ const ProductsPage = () => {
 			title: lang === 'en' ? 'product 1' : 'المنتج 1',
 			price: 100,
 			image: ProductImage,
-			shortDescription:
+			short_description:
 				lang === 'en'
 					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
 					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			section: {
-				id: 1,
-				title: lang === 'en' ? 'section 1' : 'القسم 1',
-			},
 			category: {
 				id: 1,
 				title: lang === 'en' ? 'category 1' : 'الفئة 1',
+				section: {
+					id: 1,
+					title: lang === 'en' ? 'section 1' : 'القسم 1',
+				},
 			},
 		},
 		{
@@ -94,17 +94,17 @@ const ProductsPage = () => {
 			title: lang === 'en' ? 'product 2' : 'المنتج 2',
 			price: 100,
 			image: ProductImage,
-			shortDescription:
+			short_description:
 				lang === 'en'
 					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
 					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			section: {
-				id: 2,
-				title: lang === 'en' ? 'section 2' : 'القسم 2',
-			},
 			category: {
 				id: 2,
 				title: lang === 'en' ? 'category 2' : 'الفئة 2',
+				section: {
+					id: 2,
+					title: lang === 'en' ? 'section 2' : 'القسم 2',
+				},
 			},
 		},
 		{
@@ -112,17 +112,17 @@ const ProductsPage = () => {
 			title: lang === 'en' ? 'product 3' : 'المنتج 3',
 			price: 100,
 			image: ProductImage,
-			shortDescription:
+			short_description:
 				lang === 'en'
 					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
 					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			section: {
-				id: 3,
-				title: lang === 'en' ? 'section 3' : 'القسم 3',
-			},
 			category: {
 				id: 2,
 				title: lang === 'en' ? 'category 2' : 'الفئة 2',
+				section: {
+					id: 3,
+					title: lang === 'en' ? 'section 3' : 'القسم 3',
+				},
 			},
 		},
 		{
@@ -130,17 +130,17 @@ const ProductsPage = () => {
 			title: lang === 'en' ? 'product 4' : 'المنتج 4',
 			price: 100,
 			image: ProductImage,
-			shortDescription:
+			short_description:
 				lang === 'en'
 					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
 					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			section: {
-				id: 3,
-				title: lang === 'en' ? 'section 3' : 'القسم 3',
-			},
 			category: {
 				id: 1,
 				title: lang === 'en' ? 'category 1' : 'الفئة 1',
+				section: {
+					id: 3,
+					title: lang === 'en' ? 'section 3' : 'القسم 3',
+				},
 			},
 		},
 	];

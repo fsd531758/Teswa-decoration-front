@@ -1,0 +1,7 @@
+#home-page .swiper.cards-slider-component {
+	overflow: visible !important;
+}
+
+.swiper-grid-column > .swiper-wrapper {
+	flex-direction: unset !important;
+}

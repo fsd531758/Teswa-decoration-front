@@ -3,7 +3,7 @@
 	color: rgba(var(--action-color), 1);
 	background: linear-gradient(
 			to right,
-			rgba(var(--text-color), 0.75) 40%,
+			rgba(var(--text-color), 0.4) 40%,
 			transparent
 		),
 		var(--image-url);
@@ -39,7 +39,7 @@
 #breadcrumb-component[dir='rtl'] {
 	background: linear-gradient(
 			to left,
-			rgba(var(--text-color), 0.75) 40%,
+			rgba(var(--text-color), 0.4) 40%,
 			transparent
 		),
 		var(--image-url);

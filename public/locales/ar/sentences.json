@@ -1,13 +1,11 @@
 {
 	"contactUsThroughWhatsapp": "تواصل عبر واتسآب",
-	"findUs": "تفاصيل التواصل",
 	"contactUs": "تواصل معنا",
-	"startingPrice": "أسعار تبدأ من {{price}}",
-	"ModelArea_zero": "لا يوجد معلومات متاحة",
-	"ModelArea": "المساحة: {{count}} متر مربع",
-	"ModelArea_other": "المساحة: {{count}} متر مربع",
-	"requestModel": "طلب استفسار",
 	"joinNewsletter": "انضم للقائمة البريدية",
+
+	"pages": {
+		"productsFilter": "تصاميم رائعة"
+	},
 
 	"errors": {
 		"404": "عفواً، لا يمكنك الدخول إلى هذه الصفحة!",

@@ -19,17 +19,19 @@ const ProductCardComponent = ({ product }) => {
 		// eslint-disable-next-line
 	}, [lang]);
 
+	console.log(product);
+
 	return (
 		<Container
 			lang={lang ?? 'ar'}
 			dir={lang === 'en' ? 'ltr' : 'rtl'}
 			fluid
-			className='product-card-component'
+			className='product-card-component overflow-hidden'
 		>
 			<Link
-				to={`/${lang}/sections/${product.section.id}/categories/${product.category.id}/products/${product.id}`}
+				to={`/${lang}/sections/${product.category.section.id}/categories/${product.category.id}/products/${product.id}`}
 			>
-				<Card className='h-100'>
+				<Card className='h-100 overflow-hidden'>
 					<Card.Img
 						fluid='true'
 						src={
@@ -38,7 +40,7 @@ const ProductCardComponent = ({ product }) => {
 						alt='product card image'
 						className='text-capitalize w-100 h-100'
 						style={{
-							objectFit: 'contain',
+							objectFit: 'fill',
 							objectPosition: 'center',
 						}}
 						onError={({ currentTarget }) => {
@@ -48,29 +50,35 @@ const ProductCardComponent = ({ product }) => {
 					/>
 					<Card.ImgOverlay className='text-container d-flex flex-column justify-content-end'>
 						{/* Title */}
-						<Card.Title
-							className='title text-capitalize text-limit'
-							style={{ '--lines': 1 }}
-						>
-							{product.title}
-						</Card.Title>
+						{product.title && (
+							<Card.Title
+								className='title text-capitalize text-limit'
+								style={{ '--lines': 1 }}
+							>
+								{product.title}
+							</Card.Title>
+						)}
 
 						{/* Short Description */}
-						<Card.Text
-							className='short-description text-limit'
-							style={{ '--lines': 2 }}
-							dangerouslySetInnerHTML={{ __html: product.shortDescription }}
-						></Card.Text>
+						{product.short_description && (
+							<Card.Text
+								className='short-description text-limit'
+								style={{ '--lines': 2 }}
+								dangerouslySetInnerHTML={{ __html: product.short_description }}
+							></Card.Text>
+						)}
 
-						<Card.Text className='price'>
-							<Badge bg='primary'>
-								{new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'ar-EG', {
-									style: 'currency',
-									currency: 'SAR',
-									maximumFractionDigits: 0,
-								}).format(product.price)}
-							</Badge>
-						</Card.Text>
+						{product.price && (
+							<Card.Text className='price'>
+								<Badge bg='primary'>
+									{new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'ar-EG', {
+										style: 'currency',
+										currency: 'SAR',
+										maximumFractionDigits: 0,
+									}).format(product.price)}
+								</Badge>
+							</Card.Text>
+						)}
 					</Card.ImgOverlay>
 				</Card>
 			</Link>

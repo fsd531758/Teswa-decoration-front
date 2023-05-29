@@ -57,6 +57,8 @@
 	border: none;
 	position: relative;
 	text-align: start;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 }
 
 #navbar-component .dropdown-menu .dropdown-item::after {

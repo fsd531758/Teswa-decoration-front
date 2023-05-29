@@ -2,46 +2,13 @@
 /* ************************ Swiper Component Module *********************** */
 /* ************************************************************************ */
 /* Main Swiper */
-#home-page .swiper {
+#home-page .swiper.main-slider-component {
 	--padding-value: 1rem;
 	overflow: visible !important;
 }
 
-#home-page .swiper-wrapper {
+#home-page .main-slider-component .swiper-wrapper {
 	overflow: hidden !important;
-}
-
-/* Slide Buttons */
-.swiper-button-next,
-.swiper-button-prev {
-	color: rgba(var(--text-color), 0.75);
-	transition: color calc(0.5 * var(--transition-duration));
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-	color: rgba(var(--text-color), 1);
-}
-
-/* Next Slide Button */
-.swiper-button-next {
-	right: var(--padding-value) !important;
-	left: unset !important;
-}
-
-/* Previous Slide Button */
-.swiper-button-prev {
-	left: var(--padding-value) !important;
-	right: unset !important;
-}
-
-/* Pagination Bullet Points */
-.swiper-pagination {
-	bottom: -1rem !important;
-}
-
-.swiper-pagination-bullet-active {
-	background-color: rgba(var(--action-color), 1);
 }
 
 /* ******************************************************************************** */

@@ -14,7 +14,6 @@ import { REGEX, replacePathVariables } from './../../helpers/general';
 import { isMultilingual, routes } from './../../routes/index.routes';
 
 // Images
-import CategoryImage from './../../assets/images/logos/logo.png';
 
 // Redux
 import { useSelector } from 'react-redux';
@@ -52,74 +51,6 @@ const NavbarComponent = () => {
 		setIsExpanded(!isExpanded);
 	};
 	const handleClose = () => setIsExpanded(false);
-
-	const products = [];
-
-	const categories = [
-		{
-			id: 1,
-			title: lang === 'en' ? 'category 1' : 'الفئة 1',
-			image: CategoryImage,
-			section: {
-				id: 1,
-				title: lang === 'en' ? 'section 1' : 'القسم 1',
-			},
-		},
-		{
-			id: 2,
-			title: lang === 'en' ? 'category 2' : 'الفئة 2',
-			image: CategoryImage,
-			section: {
-				id: 1,
-				title: lang === 'en' ? 'section 1' : 'القسم 1',
-			},
-		},
-		{
-			id: 3,
-			title: lang === 'en' ? 'category 3' : 'الفئة 3',
-			image: CategoryImage,
-			section: {
-				id: 2,
-				title: lang === 'en' ? 'section 2' : 'القسم 2',
-			},
-		},
-		{
-			id: 4,
-			title: lang === 'en' ? 'category 4' : 'الفئة 4',
-			image: CategoryImage,
-			section: {
-				id: 3,
-				title: lang === 'en' ? 'section 3' : 'القسم 3',
-			},
-		},
-		{
-			id: 5,
-			title: lang === 'en' ? 'category 5' : 'الفئة 5',
-			image: CategoryImage,
-			section: {
-				id: 2,
-				title: lang === 'en' ? 'section 2' : 'القسم 2',
-			},
-		},
-	];
-
-	// const sections = [
-	// 	{
-	// 		id: 1,
-	// 		title: lang === 'en' ? 'section 1' : 'القسم 1',
-	// 		categories: categories.filter((category) => category.section.id === 1),
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		title: lang === 'en' ? 'section 2' : 'القسم 2',
-	// 		categories: categories.filter((category) => category.section.id === 2),
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		title: lang === 'en' ? 'section 3' : 'القسم 3',
-	// 		categories: categories.filter((category) => category.section.id === 3),
-	// 	},
-	// ];
 
 	return (
 		<Navbar

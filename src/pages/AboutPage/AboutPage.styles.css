@@ -1,3 +1,28 @@
+#about-us-page
+	.card-container:nth-of-type(even)
+	.about-card-component
+	.image-container {
+	order: 1;
+}
+
+@media only screen and (max-width: 768px) {
+	#about-us-page
+		.card-container:nth-of-type(even)
+		.about-card-component
+		.image-container {
+		order: -1;
+	}
+}
+
+/* Card Image */
+#about-us-page
+	.card-container:nth-of-type(even)
+	.about-card-component:hover
+	.image-container
+	img {
+	transform: scale(1.2) rotate(var(--rotate-value));
+}
+
 /* ******************************************************************************** */
 /* **********************************   RTL   ************************************* */
 /* ******************************************************************************** */

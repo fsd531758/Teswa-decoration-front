@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Fade } from 'react-awesome-reveal';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { routes } from './../../routes/index.routes';
 
 // Redux
+import { useSelector } from 'react-redux';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -12,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import './AboutPage.styles.css';
 
 // Components
+import AboutCardComponent from './../../components/AboutCardComponent/AboutCardComponent';
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 
 const AboutPage = () => {
@@ -37,6 +40,9 @@ const AboutPage = () => {
 	];
 
 	// Redux
+	const { aboutUs, mission, vision, message } = useSelector(
+		(state) => state.aboutData
+	);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -65,7 +71,37 @@ const AboutPage = () => {
 			/>
 
 			{/* Content */}
-			<Container>AboutPage</Container>
+			<Container>
+				<Row xs={1} className='g-5 overflow-hidden'>
+					{/* About Us */}
+					<Col className='card-container'>
+						<Fade direction={lang === 'en' ? 'left' : 'right'} delay={20}>
+							<AboutCardComponent content={aboutUs} />
+						</Fade>
+					</Col>
+
+					{/* Mission */}
+					<Col className='card-container'>
+						<Fade direction={lang === 'en' ? 'right' : 'left'} delay={40}>
+							<AboutCardComponent content={mission} />
+						</Fade>
+					</Col>
+
+					{/* Vision */}
+					<Col className='card-container'>
+						<Fade direction={lang === 'en' ? 'left' : 'right'} delay={60}>
+							<AboutCardComponent content={vision} />
+						</Fade>
+					</Col>
+
+					{/* Message */}
+					<Col className='card-container'>
+						<Fade direction={lang === 'en' ? 'right' : 'left'} delay={80}>
+							<AboutCardComponent content={message} />
+						</Fade>
+					</Col>
+				</Row>
+			</Container>
 		</Container>
 	);
 };

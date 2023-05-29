@@ -1,0 +1,60 @@
+/* Card Image Container */
+.about-card-component .image-container {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+@media only screen and (max-width: 768px) {
+	.about-card-component .image-container {
+		height: 18rem !important;
+	}
+}
+
+/* Card Image */
+.about-card-component .image-container img {
+	--rotate-value: 3deg;
+
+	background-color: rgba(var(--primary-color), 0.1);
+	background-image: url('./../../assets/images/logos/logo.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+
+	transform: scale(1) rotate(0);
+	transition: transform var(--transition-duration);
+}
+
+.about-card-component:hover .image-container img {
+	transform: scale(1.2) rotate(calc(-1 * var(--rotate-value)));
+}
+
+/* Card Text Container */
+.about-card-component .text-container {
+	padding: 2rem;
+}
+
+/* Title */
+.about-card-component .text-container .title {
+	color: rgba(var(--primary-color), 1);
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+
+	transition: color var(--transition-duration);
+}
+
+.about-card-component:hover .text-container .title {
+	color: rgba(var(--action-color), 1);
+}
+
+/* Description */
+.about-card-component .text-container .description,
+.about-card-component .text-container .description * {
+	margin: 0;
+	padding: 0;
+}
+
+.about-card-component .text-container .description {
+	color: rgba(var(--primary-color), 0.5);
+	text-align: center;
+}

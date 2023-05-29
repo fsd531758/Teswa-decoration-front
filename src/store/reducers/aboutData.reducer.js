@@ -22,7 +22,6 @@ export const fetchAboutData = createAsyncThunk(
 
 export const aboutDataSlice = createSlice({
 	initialState: {
-		sliders: [],
 		aboutUs: {},
 		mission: {},
 		vision: {},
@@ -39,8 +38,7 @@ export const aboutDataSlice = createSlice({
 
 		// Fulfilled
 		builder.addCase(fetchAboutData.fulfilled, (state, action) => {
-			state.sliders = action.payload.about_sliders;
-			state.aboutUs = action.payload.about_us;
+			state.aboutUs = action.payload.about;
 			state.mission = action.payload.mission;
 			state.vision = action.payload.vision;
 			state.message = action.payload.message;

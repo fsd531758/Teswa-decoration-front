@@ -32,5 +32,11 @@
 		"min": "Message must be {{ min }} characters at minimum",
 		"max": "Message must be less than {{ max }} characters",
 		"required": "Message is required"
+	},
+
+	"file": {
+		"size": "File size is too large",
+		"type": "Unsupported file type",
+		"required": "File is required"
 	}
 }

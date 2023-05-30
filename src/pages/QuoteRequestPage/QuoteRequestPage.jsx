@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
 // Redux
+import { useSelector } from 'react-redux';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -12,7 +13,8 @@ import { useTranslation } from 'react-i18next';
 import './QuoteRequestPage.styles.css';
 
 // Components
-import BreadcrumbComponent from '../../components/BreadcrumbComponent/BreadcrumbComponent';
+import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import QuoteFormComponent from './../../components/QuoteFormComponent/QuoteFormComponent';
 
 const QuoteRequestPage = () => {
 	// i18next
@@ -41,6 +43,7 @@ const QuoteRequestPage = () => {
 	];
 
 	// Redux
+	const { quotation } = useSelector((state) => state.homeData);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -69,7 +72,43 @@ const QuoteRequestPage = () => {
 			/>
 
 			{/* Content */}
-			<Container>QuoteRequestPage</Container>
+			<Container>
+				<Row xs={1} md={2} className='g-4'>
+					{/* Page Title & Description */}
+					<Col
+						className='text-container'
+						style={{
+							'--bg-image': `url(${quotation.image})`,
+						}}
+					>
+						<Row
+							xs={1}
+							className='h-100 text-center d-flex flex-column justify-content-center align-items-center'
+						>
+							{/* Subtitle */}
+							<Col className='section-subtitle text-capitalize'>
+								{quotation.sub_title}
+							</Col>
+
+							{/* Title */}
+							<Col className='section-title text-capitalize'>
+								{quotation.title}
+							</Col>
+
+							{/* Description */}
+							<Col
+								className='description text-capitalize'
+								dangerouslySetInnerHTML={{ __html: quotation.description }}
+							></Col>
+						</Row>
+					</Col>
+
+					{/* Quote Form */}
+					<Col>
+						<QuoteFormComponent />
+					</Col>
+				</Row>
+			</Container>
 		</Container>
 	);
 };

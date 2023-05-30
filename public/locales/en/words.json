@@ -60,7 +60,9 @@
 		"email": "email",
 		"phone": "phone number",
 		"country": "country",
-		"message": "your message"
+		"message": "your message",
+		"file": "file",
+		"fileInput": "choose file"
 	},
 
 	"placeholders": {
@@ -69,12 +71,18 @@
 		"email": "enter your email address",
 		"phone": "",
 		"country": "-- country --",
-		"message": "enter your thoughts here ..."
+		"message": "enter your thoughts here ...",
+		"file": "file",
+		"fileName": "no file chosen"
 	},
 
 	"hints": {
 		"message": {
 			"length": "out of {{ max }} characters"
+		},
+		"file": {
+			"size": "Max file size: {{ max }} MB",
+			"type": "Accepted Formats:"
 		}
 	},
 

@@ -30,6 +30,7 @@ export const homeDataSlice = createSlice({
 		partners: [],
 		trendingProducts: {},
 		trendingProductsData: [],
+		quotation: {},
 		isHomeDataLoading: true,
 	},
 	name: 'homeDataSlice',
@@ -69,6 +70,8 @@ export const homeDataSlice = createSlice({
 			}))(action.payload.trending_products);
 
 			state.trendingProductsData = action.payload.trending_products.products;
+
+			state.quotation = action.payload.quotation;
 
 			state.isHomeDataLoading = false;
 		});

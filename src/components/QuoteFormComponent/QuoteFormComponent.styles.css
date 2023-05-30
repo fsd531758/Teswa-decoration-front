@@ -1,0 +1,107 @@
+/* ******************************************************************************** */
+/* ******************************   File Input   ********************************** */
+/* ******************************************************************************** */
+/* Input Group */
+.quote-form-component .input-group {
+	border-radius: 0.375rem;
+	border: 1px solid #ced4da;
+}
+
+/* Input File Group Label */
+.quote-form-component input[type='file'],
+.quote-form-component input[type='file']::file-selector-button,
+.quote-form-component input[type='file']::-webkit-file-upload-button {
+	display: none;
+}
+
+.quote-form-component .input-group .input-group-text {
+	border-radius: 0.375rem 0 0 0.375rem !important;
+	cursor: pointer;
+	border: none;
+	transition-property: background-color;
+	transition-duration: var(--transition-duration);
+}
+
+.quote-form-component .input-group:hover .input-group-text {
+	background-color: #dde0e3;
+}
+
+/* Input File */
+.quote-form-component .input-group input {
+	border-radius: 0 0.375rem 0.375rem 0 !important;
+	cursor: pointer;
+	caret-color: transparent;
+	border: none !important;
+	border-left: 1px solid #ced4da !important;
+}
+
+.quote-form-component .input-group input[type='text']:focus {
+	box-shadow: none;
+	border: none;
+}
+
+.quote-form-component .input-group:has(input[type='text']:focus) {
+	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	border-color: #86b7fe;
+}
+
+.quote-form-component .input-group input::placeholder {
+	text-transform: capitalize;
+}
+
+/* Input File Validation Error */
+.quote-form-component input.form-control.is-invalid {
+	padding-right: calc(1.5em + 0.75rem);
+	background-position: right calc(0.375em + 0.1875rem) center;
+}
+
+.quote-form-component .input-group.is-invalid {
+	border-color: #dc3545 !important;
+}
+
+.quote-form-component .input-group.is-invalid input {
+	padding-right: calc(1.5em + 0.75rem);
+	background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e');
+	background-repeat: no-repeat;
+	background-position: right calc(0.375em + 0.1875rem) center;
+	background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.quote-form-component .input-group.is-invalid:has(input:focus) {
+	box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */
+[lang='ar'] .quote-form-component .input-group .input-group-text {
+	border-radius: 0 0.375rem 0.375rem 0 !important;
+	border-left: none;
+	border-right: 1px solid #ced4da;
+}
+
+[lang='ar'] .quote-form-component .input-group input {
+	border-radius: 0.375rem 0 0 0.375rem !important;
+	border: none !important;
+	border-right: 1px solid #ced4da !important;
+}
+
+[lang='ar']
+	.input-group
+	> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
+		.valid-feedback
+	):not(.invalid-tooltip):not(.invalid-feedback) {
+	margin-left: unset;
+}
+
+[lang='ar'] .quote-form-component input.form-control.is-invalid {
+	padding-left: calc(1.5em + 0.75rem) !important;
+	padding-right: 0.75rem !important;
+	background-position: left calc(0.375em + 0.1875rem) center !important;
+}
+
+[lang='ar'] .quote-form-component .input-group.is-invalid input {
+	padding-right: 0.75rem;
+	padding-left: calc(1.5em + 0.75rem);
+	background-position: left calc(0.375em + 0.1875rem) center;
+}

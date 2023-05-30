@@ -15,6 +15,7 @@ import './ServicesPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 import ServiceCardComponent from './../../components/ServiceCardComponent/ServiceCardComponent';
 
 const ServicesPage = () => {
@@ -66,6 +67,9 @@ const ServicesPage = () => {
 				minHeight: '100vh',
 			}}
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.services')} />
+
 			{/* Breadcrumb */}
 			<BreadcrumbComponent
 				title={t('words:breadcrumb.services')}

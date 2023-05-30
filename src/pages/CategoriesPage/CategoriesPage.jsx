@@ -20,6 +20,7 @@ import BreadcrumbComponent from './../../components/BreadcrumbComponent/Breadcru
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import CategoryCardComponent from './../../components/CategoryCardComponent/CategoryCardComponent';
 import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 
 const CategoriesPage = () => {
 	// i18next
@@ -88,6 +89,9 @@ const CategoriesPage = () => {
 				minHeight: '100vh',
 			}}
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.categories')} />
+
 			{/* Breadcrumb */}
 			<BreadcrumbComponent title={title} items={breadcrumbItems} />
 

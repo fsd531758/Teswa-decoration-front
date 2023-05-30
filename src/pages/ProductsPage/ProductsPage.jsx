@@ -19,6 +19,7 @@ import './ProductsPage.styles.css';
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 import ProductCardComponent from './../../components/ProductCardComponent/ProductCardComponent';
 
 const ProductsPage = () => {
@@ -171,6 +172,9 @@ const ProductsPage = () => {
 				minHeight: '100vh',
 			}}
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.products')} />
+
 			{/* Breadcrumb */}
 			<BreadcrumbComponent title={category.title} items={breadcrumbItems} />
 

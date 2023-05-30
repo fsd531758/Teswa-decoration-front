@@ -38,6 +38,18 @@
 		"products": "منتجات"
 	},
 
+	"windowTab": {
+		"home": "الرئيسية",
+		"aboutUs": "من نحن",
+		"contactUs": "تواصل معنا",
+		"services": "الخدمات",
+		"quoteRequest": "طلب عرض سعر",
+		"sections": "الأقسام",
+		"categories": "الفئات",
+		"products": "المنتجات",
+		"productDetails": "تفاصيل المنتج"
+	},
+
 	"breadcrumb": {
 		"home": "الرئيسية",
 		"aboutUs": "من نحن",

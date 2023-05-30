@@ -18,6 +18,7 @@ import './ContactPage.styles.css';
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 import ContactFormComponent from './../../components/ContactFormComponent/ContactFormComponent';
 import ContactInfoComponent from './../../components/ContactInfoComponent/ContactInfoComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 
 const ContactPage = () => {
 	// i18next
@@ -66,6 +67,9 @@ const ContactPage = () => {
 				minHeight: '100vh',
 			}}
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.contactUs')} />
+
 			{/* Breadcrumb */}
 			<BreadcrumbComponent
 				title={t('words:breadcrumb.contactUs')}

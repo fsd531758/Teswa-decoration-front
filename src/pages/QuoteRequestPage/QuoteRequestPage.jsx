@@ -14,6 +14,7 @@ import './QuoteRequestPage.styles.css';
 
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 import QuoteFormComponent from './../../components/QuoteFormComponent/QuoteFormComponent';
 
 const QuoteRequestPage = () => {
@@ -65,6 +66,9 @@ const QuoteRequestPage = () => {
 				minHeight: '100vh',
 			}}
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.quoteRequest')} />
+
 			{/* Breadcrumb */}
 			<BreadcrumbComponent
 				title={t('words:breadcrumb.quoteRequest')}

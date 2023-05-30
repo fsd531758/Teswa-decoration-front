@@ -38,6 +38,18 @@
 		"products": "products"
 	},
 
+	"windowTab": {
+		"home": "Home",
+		"aboutUs": "About Us",
+		"contactUs": "Contact Us",
+		"services": "Services",
+		"quoteRequest": "Quote Request",
+		"sections": "Sections",
+		"categories": "Categories",
+		"products": "Products",
+		"productDetails": "Product Details"
+	},
+
 	"breadcrumb": {
 		"home": "home",
 		"aboutUs": "about us",

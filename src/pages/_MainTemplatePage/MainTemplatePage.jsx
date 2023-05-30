@@ -83,6 +83,9 @@ const MainTemplatePage = ({ children }) => {
 		<LoadingComponent />
 	) : (
 		<>
+			{/* Meta Tags */}
+			<MetaTagsComponent />
+
 			{/* Page Navbar */}
 			<NavbarComponent />
 
@@ -97,9 +100,6 @@ const MainTemplatePage = ({ children }) => {
 
 			{/* Go To Top Button */}
 			<GoToTopComponent />
-
-			{/* Meta Tags */}
-			<MetaTagsComponent />
 
 			{/* Toast Messages */}
 			<ToastContainer

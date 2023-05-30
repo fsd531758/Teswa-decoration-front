@@ -16,6 +16,7 @@ import './AboutPage.styles.css';
 // Components
 import AboutCardComponent from './../../components/AboutCardComponent/AboutCardComponent';
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 
 const AboutPage = () => {
 	// i18next
@@ -64,6 +65,9 @@ const AboutPage = () => {
 				minHeight: '100vh',
 			}}
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.aboutUs')} />
+
 			{/* Breadcrumb */}
 			<BreadcrumbComponent
 				title={t('words:breadcrumb.aboutUs')}

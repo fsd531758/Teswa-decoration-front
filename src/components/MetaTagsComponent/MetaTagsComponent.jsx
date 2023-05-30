@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 // Redux
 import { useSelector } from 'react-redux';
 
-const MetaTagsComponent = () => {
+const MetaTagsComponent = ({ pageTitle = '' }) => {
 	const { lang } = useParams();
 
 	// Redux
@@ -39,9 +39,8 @@ const MetaTagsComponent = () => {
 				<meta name='keywords' content={meta_keywords} />
 
 				{/* Tab Title */}
-				{/* <title>{website_title}</title> */}
 				<title>
-					{lang === 'ar' ? 'فن المعمار للديكور' : 'Faan Alme3mar Decoration'}
+					{pageTitle ? `${pageTitle} | ${website_title}` : `${website_title}`}
 				</title>
 
 				{/* Favicon */}

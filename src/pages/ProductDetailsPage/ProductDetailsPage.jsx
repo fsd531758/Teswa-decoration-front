@@ -21,6 +21,7 @@ import BreadcrumbComponent from './../../components/BreadcrumbComponent/Breadcru
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import LightboxComponent from './../../components/LightboxComponent/LightboxComponent';
 import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 
 const ProductDetailsPage = () => {
 	// i18next
@@ -115,6 +116,9 @@ const ProductDetailsPage = () => {
 				minHeight: '100vh',
 			}}
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.productDetails')} />
+
 			{/* Breadcrumb */}
 			<BreadcrumbComponent title={product.title} items={breadcrumbItems} />
 

@@ -16,6 +16,7 @@ import CardsSliderComponent from './../../components/CardsSliderComponent/CardsS
 import ContactFormComponent from './../../components/ContactFormComponent/ContactFormComponent';
 import ContactInfoComponent from './../../components/ContactInfoComponent/ContactInfoComponent';
 import MainSliderComponent from './../../components/MainSliderComponent/MainSliderComponent';
+import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 import PartnersComponent from './../../components/PartnersComponent/PartnersComponent';
 import ProductCardComponent from './../../components/ProductCardComponent/ProductCardComponent';
 import ProgressBarComponent from './../../components/ProgressBarComponent/ProgressBarComponent';
@@ -96,6 +97,9 @@ const HomePage = () => {
 			id='home-page'
 			className='page overflow-hidden'
 		>
+			{/* MetaData */}
+			<MetaTagsComponent pageTitle={t('words:windowTab.home')} />
+
 			{/* Main Slider */}
 			<Container fluid className='px-0'>
 				<MainSliderComponent sliders={sliders} />

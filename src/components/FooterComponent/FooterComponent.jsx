@@ -6,6 +6,7 @@ import {
 	FaGlobe,
 	FaInstagram,
 	FaLinkedinIn,
+	FaPinterest,
 	FaTwitter,
 	FaYoutube,
 } from 'react-icons/fa';
@@ -37,7 +38,14 @@ const FooterComponent = () => {
 
 	// Redux
 	const {
-		settings: { logo, footer_description, address, copyrights },
+		settings: {
+			logo,
+			white_logo,
+			footer_img,
+			footer_description,
+			address,
+			copyrights,
+		},
 		contacts: { mobiles, telephones, emails, socials },
 	} = useSelector((state) => state.settingsData);
 
@@ -53,6 +61,7 @@ const FooterComponent = () => {
 				id='footer-component'
 				fluid
 				className='position-relative'
+				style={{ '--bg-image': `url(${footer_img})` }}
 			>
 				<Container
 					fluid='md'
@@ -71,7 +80,7 @@ const FooterComponent = () => {
 											xs={12}
 											sm={6}
 											md={5}
-											lg={3}
+											lg={4}
 											className='overflow-hidden'
 										>
 											<Row xs={1} className='g-3'>
@@ -99,6 +108,7 @@ const FooterComponent = () => {
 															fluid
 															src={
 																require('./../../assets/images/logos/logo.png') ??
+																white_logo ??
 																logo
 															}
 															alt='company logo'
@@ -130,7 +140,7 @@ const FooterComponent = () => {
 											xs={12}
 											sm={6}
 											md={3}
-											lg={2}
+											lg={4}
 											className='overflow-hidden'
 										>
 											<Row xs={1} className='g-3'>
@@ -226,7 +236,7 @@ const FooterComponent = () => {
 											xs={12}
 											sm={6}
 											md={4}
-											lg={3}
+											lg={4}
 											className='overflow-hidden'
 										>
 											<Row xs={1} className='g-2 contact-info'>
@@ -377,6 +387,8 @@ const FooterComponent = () => {
 															? '#f56040'
 															: social.contact.includes('youtube')
 															? '#ff0000'
+															: social.contact.includes('pinterest')
+															? '#e60023'
 															: '#34bf49',
 													}}
 												>
@@ -390,6 +402,8 @@ const FooterComponent = () => {
 														<FaInstagram size={20} />
 													) : social.contact.includes('youtube') ? (
 														<FaYoutube size={20} />
+													) : social.contact.includes('pinterest') ? (
+														<FaPinterest size={20} />
 													) : (
 														<FaGlobe size={20} />
 													)}

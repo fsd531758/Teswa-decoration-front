@@ -5,10 +5,9 @@ import { useLocation, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
-// Images
-import ProductImage from './../../assets/images/logos/logo.png';
-
 // Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSingleCategory } from './../../store/reducers/categories.reducer';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -19,11 +18,12 @@ import './ProductsPage.styles.css';
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
+import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
 import ProductCardComponent from './../../components/ProductCardComponent/ProductCardComponent';
 
 const ProductsPage = () => {
 	// i18next
-	const { lang, section_id } = useParams();
+	const { lang, section_id, category_id } = useParams();
 	const { t, i18n } = useTranslation();
 	useEffect(() => {
 		i18n.changeLanguage(lang ?? 'ar');
@@ -60,6 +60,19 @@ const ProductsPage = () => {
 	];
 
 	// Redux
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			fetchSingleCategory({
+				language: lang ?? 'ar',
+				searchParams: { id: category_id },
+			})
+		);
+		// eslint-disable-next-line
+	}, [lang, section_id, category_id]);
+	const { category, isSingleCategoryLoading } = useSelector(
+		(state) => state.categories
+	);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -70,82 +83,84 @@ const ProductsPage = () => {
 		});
 	}, [lang]);
 
-	const products = [
-		{
-			id: 1,
-			title: lang === 'en' ? 'product 1' : 'المنتج 1',
-			price: 100,
-			image: ProductImage,
-			short_description:
-				lang === 'en'
-					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
-					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			category: {
-				id: 1,
-				title: lang === 'en' ? 'category 1' : 'الفئة 1',
-				section: {
-					id: 1,
-					title: lang === 'en' ? 'section 1' : 'القسم 1',
-				},
-			},
-		},
-		{
-			id: 2,
-			title: lang === 'en' ? 'product 2' : 'المنتج 2',
-			price: 100,
-			image: ProductImage,
-			short_description:
-				lang === 'en'
-					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
-					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			category: {
-				id: 2,
-				title: lang === 'en' ? 'category 2' : 'الفئة 2',
-				section: {
-					id: 2,
-					title: lang === 'en' ? 'section 2' : 'القسم 2',
-				},
-			},
-		},
-		{
-			id: 3,
-			title: lang === 'en' ? 'product 3' : 'المنتج 3',
-			price: 100,
-			image: ProductImage,
-			short_description:
-				lang === 'en'
-					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
-					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			category: {
-				id: 2,
-				title: lang === 'en' ? 'category 2' : 'الفئة 2',
-				section: {
-					id: 3,
-					title: lang === 'en' ? 'section 3' : 'القسم 3',
-				},
-			},
-		},
-		{
-			id: 4,
-			title: lang === 'en' ? 'product 4' : 'المنتج 4',
-			price: 100,
-			image: ProductImage,
-			short_description:
-				lang === 'en'
-					? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
-					: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-			category: {
-				id: 1,
-				title: lang === 'en' ? 'category 1' : 'الفئة 1',
-				section: {
-					id: 3,
-					title: lang === 'en' ? 'section 3' : 'القسم 3',
-				},
-			},
-		},
-	];
+	// const products = [
+	// 	{
+	// 		id: 1,
+	// 		title: lang === 'en' ? 'product 1' : 'المنتج 1',
+	// 		price: 100,
+	// 		image: ProductImage,
+	// 		short_description:
+	// 			lang === 'en'
+	// 				? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+	// 				: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+	// 		category: {
+	// 			id: 1,
+	// 			title: lang === 'en' ? 'category 1' : 'الفئة 1',
+	// 			section: {
+	// 				id: 1,
+	// 				title: lang === 'en' ? 'section 1' : 'القسم 1',
+	// 			},
+	// 		},
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		title: lang === 'en' ? 'product 2' : 'المنتج 2',
+	// 		price: 100,
+	// 		image: ProductImage,
+	// 		short_description:
+	// 			lang === 'en'
+	// 				? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+	// 				: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+	// 		category: {
+	// 			id: 2,
+	// 			title: lang === 'en' ? 'category 2' : 'الفئة 2',
+	// 			section: {
+	// 				id: 2,
+	// 				title: lang === 'en' ? 'section 2' : 'القسم 2',
+	// 			},
+	// 		},
+	// 	},
+	// 	{
+	// 		id: 3,
+	// 		title: lang === 'en' ? 'product 3' : 'المنتج 3',
+	// 		price: 100,
+	// 		image: ProductImage,
+	// 		short_description:
+	// 			lang === 'en'
+	// 				? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+	// 				: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+	// 		category: {
+	// 			id: 2,
+	// 			title: lang === 'en' ? 'category 2' : 'الفئة 2',
+	// 			section: {
+	// 				id: 3,
+	// 				title: lang === 'en' ? 'section 3' : 'القسم 3',
+	// 			},
+	// 		},
+	// 	},
+	// 	{
+	// 		id: 4,
+	// 		title: lang === 'en' ? 'product 4' : 'المنتج 4',
+	// 		price: 100,
+	// 		image: ProductImage,
+	// 		short_description:
+	// 			lang === 'en'
+	// 				? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
+	// 				: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
+	// 		category: {
+	// 			id: 1,
+	// 			title: lang === 'en' ? 'category 1' : 'الفئة 1',
+	// 			section: {
+	// 				id: 3,
+	// 				title: lang === 'en' ? 'section 3' : 'القسم 3',
+	// 			},
+	// 		},
+	// 	},
+	// ];
 
-	return (
+	return isSingleCategoryLoading ? (
+		<LoadingComponent />
+	) : (
 		<Container
 			fluid
 			lang={lang ?? 'ar'}
@@ -157,10 +172,7 @@ const ProductsPage = () => {
 			}}
 		>
 			{/* Breadcrumb */}
-			<BreadcrumbComponent
-				title={t('words:breadcrumb.categoryName')}
-				items={breadcrumbItems}
-			/>
+			<BreadcrumbComponent title={category.title} items={breadcrumbItems} />
 
 			{/* Content */}
 			<Container>
@@ -188,8 +200,8 @@ const ProductsPage = () => {
 				</Row>
 
 				<Row className='g-4'>
-					{products.length > 0 ? (
-						products.map((product, index) => (
+					{category.products.length > 0 ? (
+						category.products.map((product, index) => (
 							<Col key={index} xs={12} md={6} xl={4}>
 								<ProductCardComponent product={product} />
 							</Col>

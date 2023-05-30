@@ -48,8 +48,8 @@ const MainTemplatePage = ({ children }) => {
 		dispatch(fetchHomeData(lang ?? 'ar'));
 		dispatch(fetchAboutData(lang ?? 'ar'));
 		dispatch(fetchSections({ language: lang ?? 'ar', searchParams: {} }));
-		dispatch(fetchCategories(lang ?? 'ar'));
-		dispatch(fetchProducts(lang ?? 'ar'));
+		dispatch(fetchCategories({ language: lang ?? 'ar', searchParams: {} }));
+		dispatch(fetchProducts({ language: lang ?? 'ar', searchParams: {} }));
 		dispatch(fetchSettingsData(lang ?? 'ar'));
 		dispatch(fetchContactsData(lang ?? 'ar'));
 		// eslint-disable-next-line
@@ -75,6 +75,8 @@ const MainTemplatePage = ({ children }) => {
 
 	return isSettingsLoading ||
 		isContactsLoading ||
+		isHomeDataLoading ||
+		isAboutDataLoading ||
 		isSectionsLoading ||
 		isCategoriesLoading ||
 		isProductsLoading ? (

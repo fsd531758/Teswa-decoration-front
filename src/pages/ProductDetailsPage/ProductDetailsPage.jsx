@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 import { Badge, Col, Container, Image, Row } from 'react-bootstrap';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useLocation, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { routes } from './../../routes/index.routes';
 
-// Images
-import ProductImage from './../../assets/images/logos/logo.png';
-
 // Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSingleProduct } from './../../store/reducers/products.reducer';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -17,14 +17,14 @@ import { useTranslation } from 'react-i18next';
 import './ProductDetailsPage.styles.css';
 
 // Components
-import { Fade } from 'react-awesome-reveal';
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import LightboxComponent from './../../components/LightboxComponent/LightboxComponent';
+import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
 
 const ProductDetailsPage = () => {
 	// i18next
-	const { lang, section_id, category_id } = useParams();
+	const { lang, section_id, category_id, product_id } = useParams();
 	const { t, i18n } = useTranslation();
 	useEffect(() => {
 		i18n.changeLanguage(lang ?? 'ar');
@@ -33,88 +33,65 @@ const ProductDetailsPage = () => {
 
 	const location = useLocation();
 
-	const product = {
-		id: 1,
-		title: lang === 'en' ? 'product 1' : 'المنتج 1',
-		price: 100,
-		images: [ProductImage, ProductImage, ProductImage, ProductImage],
-		shortDescription:
-			lang === 'en'
-				? '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ad tempore nam magnam similique, dignissimos recusandae modi</p>'
-				: '<p>هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف قصير عن المنتج سيتم تعديله عند موافقة العميل</p>',
-		description:
-			lang === 'en'
-				? `<p>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo similique, ducimus, repudiandae ab alias ipsum quaerat accusantium consectetur praesentium non obcaecati corporis omnis sequi delectus expedita. Vero illo unde veniam?</p>
-				<ul>
-				<li>list item #1</li>
-				<li>list item #2</li>
-				<li>list item #3</li>
-				<li>list item #4</li>
-				</ul>
-				</p>`
-				: `<p>
-				<p>
-				هذا وصف طويل عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف طويل عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف طويل عن المنتج سيتم تعديله عند موافقة العميل ، هذا وصف طويل عن المنتج سيتم تعديله عند موافقة العميل
-				</p>
-				<ul>
-				<li>عنصر قائمة رقم 1</li>
-				<li>عنصر قائمة رقم 2</li>
-				<li>عنصر قائمة رقم 3</li>
-				<li>عنصر قائمة رقم 4</li>
-				</ul>
-				</p>`,
-		section: {
-			id: 1,
-			title: lang === 'en' ? 'section 1' : 'القسم 1',
-		},
-		category: {
-			id: 1,
-			title: lang === 'en' ? 'category 1' : 'الفئة 1',
-		},
-	};
-
-	const breadcrumbItems = [
-		{
-			title: t('words:breadcrumb.home'),
-			href: routes.home.replace(REGEX, function (matched) {
-				return replacePathVariables(matched, {
-					lang: lang,
-				});
-			}),
-			isActive: false,
-		},
-		{
-			title: t('words:breadcrumb.sectionName'),
-			href: routes.sections.single.replace(REGEX, function (matched) {
-				return replacePathVariables(matched, {
-					lang: lang,
-					section_id: section_id,
-				});
-			}),
-			isActive: false,
-		},
-		{
-			title: t('words:breadcrumb.categoryName'),
-			href: routes.categories.single.replace(REGEX, function (matched) {
-				return replacePathVariables(matched, {
-					lang: lang,
-					section_id: section_id,
-					category_id: category_id,
-				});
-			}),
-			isActive: false,
-		},
-		{
-			title: t('words:breadcrumb.productDetails'),
-			href: '',
-			isActive: true,
-		},
-	];
-
 	const [lightbox, setLightbox] = useState({ isOpen: false, index: 0 });
 
 	// Redux
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(
+			fetchSingleProduct({
+				language: lang ?? 'ar',
+				searchParams: { id: product_id },
+			})
+		);
+		// eslint-disable-next-line
+	}, [lang, section_id, category_id, product_id]);
+	const { product, isSingleProductLoading } = useSelector(
+		(state) => state.products
+	);
+
+	// Breadcrumb State
+	const [breadcrumbItems, setBreadcrumbItems] = useState([]);
+	useEffect(() => {
+		setBreadcrumbItems([
+			{
+				title: t('words:breadcrumb.home'),
+				href: routes.home.replace(REGEX, function (matched) {
+					return replacePathVariables(matched, {
+						lang: lang,
+					});
+				}),
+				isActive: false,
+			},
+			{
+				title: product?.category?.section?.title ?? '',
+				href: routes.sections.single.replace(REGEX, function (matched) {
+					return replacePathVariables(matched, {
+						lang: lang,
+						section_id: section_id,
+					});
+				}),
+				isActive: false,
+			},
+			{
+				title: product?.category?.title ?? '',
+				href: routes.categories.single.replace(REGEX, function (matched) {
+					return replacePathVariables(matched, {
+						lang: lang,
+						section_id: section_id,
+						category_id: category_id,
+					});
+				}),
+				isActive: false,
+			},
+			{
+				title: t('words:breadcrumb.productDetails'),
+				href: '',
+				isActive: true,
+			},
+		]);
+		// eslint-disable-next-line
+	}, [lang, product]);
 
 	// Scroll To Top On Initial Render
 	useEffect(() => {
@@ -125,7 +102,9 @@ const ProductDetailsPage = () => {
 		});
 	}, [lang]);
 
-	return (
+	return isSingleProductLoading ? (
+		<LoadingComponent />
+	) : (
 		<Container
 			fluid
 			lang={lang ?? 'ar'}
@@ -137,10 +116,7 @@ const ProductDetailsPage = () => {
 			}}
 		>
 			{/* Breadcrumb */}
-			<BreadcrumbComponent
-				title={t('words:breadcrumb.productName')}
-				items={breadcrumbItems}
-			/>
+			<BreadcrumbComponent title={product.title} items={breadcrumbItems} />
 
 			{/* Content */}
 			<Container>
@@ -217,7 +193,7 @@ const ProductDetailsPage = () => {
 							{/* Lightbox Container */}
 							<LightboxComponent
 								gallery={product.images}
-								pathname={'<object>'}
+								pathname={'<object>.path'}
 								lightbox={lightbox}
 								setLightbox={setLightbox}
 							/>
@@ -251,7 +227,9 @@ const ProductDetailsPage = () => {
 							<Fade direction={lang === 'en' ? 'left' : 'right'} delay={60}>
 								<Col
 									className='short-description'
-									dangerouslySetInnerHTML={{ __html: product.shortDescription }}
+									dangerouslySetInnerHTML={{
+										__html: product.short_description,
+									}}
 								></Col>
 							</Fade>
 

@@ -20,20 +20,7 @@
 
 /* Single Partner Container */
 .partners-slider-component .partners-slider-container {
-	height: 6vh;
 	margin: 0 1rem;
-}
-
-/* Partner Image */
-.partners-slider-component img {
-	min-width: 6rem !important;
-	max-width: 9rem !important;
-	filter: grayscale(100%);
-	transition: filter var(--transition-duration);
-}
-
-.partners-slider-component img:hover {
-	filter: grayscale(0);
 }
 
 /* ******************************************************************************** */

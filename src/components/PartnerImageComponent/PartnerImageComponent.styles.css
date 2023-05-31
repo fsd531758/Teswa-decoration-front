@@ -1,0 +1,19 @@
+.partner-image-component {
+	height: 5rem !important;
+}
+
+/* Partner Image */
+.partner-image-component img {
+	width: 100% !important;
+	height: inherit !important;
+	filter: grayscale(100%);
+	transition: filter var(--transition-duration);
+}
+
+.partner-image-component img:hover {
+	filter: grayscale(0);
+}
+
+/* ******************************************************************************** */
+/* **********************************   RTL   ************************************* */
+/* ******************************************************************************** */

@@ -80,7 +80,7 @@ const ContactPage = () => {
 			<Container>
 				<Row xs={1} md={2} className='g-4'>
 					{/* Contact Form Container */}
-					<Col className='d-flex flex-column'>
+					<Col className='form-container d-flex flex-column'>
 						<Fade direction='down' delay={40}>
 							<Col className='section-title'>{t('words:contactUs')}</Col>
 						</Fade>
@@ -90,7 +90,7 @@ const ContactPage = () => {
 					</Col>
 
 					{/* Contact Details Container */}
-					<Col className='d-flex flex-column'>
+					<Col className='info-container d-flex flex-column'>
 						<Fade direction='down' delay={40}>
 							<Col className='section-title'>{t('words:contactInfo')}</Col>
 						</Fade>

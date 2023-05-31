@@ -19,11 +19,6 @@
 	}
 }
 
-/* Subtitle */
-#quote-request-page .text-container .section-subtitle {
-	text-shadow: 0 0 4px rgba(var(--primary-color), 1);
-}
-
 /* Title */
 #quote-request-page .text-container .section-title {
 	color: rgba(255, 255, 255, 1);

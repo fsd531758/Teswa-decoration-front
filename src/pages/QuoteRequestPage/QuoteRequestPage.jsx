@@ -89,11 +89,6 @@ const QuoteRequestPage = () => {
 							xs={1}
 							className='h-100 text-center d-flex flex-column justify-content-center align-items-center'
 						>
-							{/* Subtitle */}
-							<Col className='section-subtitle text-capitalize'>
-								{quotation.sub_title}
-							</Col>
-
 							{/* Title */}
 							<Col className='section-title text-capitalize'>
 								{quotation.title}

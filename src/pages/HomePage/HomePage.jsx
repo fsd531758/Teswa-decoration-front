@@ -31,6 +31,8 @@ const HomePage = () => {
 		// eslint-disable-next-line
 	}, [lang]);
 
+	const FILTER_CARDS_COUNT = 3;
+
 	// Animate Progress Bars
 	const progressContainerRef = useRef();
 	const [isFull, setIsFull] = useState(false);
@@ -304,18 +306,12 @@ const HomePage = () => {
 								<Row
 									xs={1}
 									md={filteredProducts.length > 0 ? 2 : 1}
-									lg={
-										filteredProducts.length > 0
-											? activeCategory.title === t('words:allCategories')
-												? 3
-												: 2
-											: 1
-									}
+									xl={filteredProducts.length > 0 ? 3 : 1}
 									className='g-4 overflow-hidden'
 								>
 									{filteredProducts.length > 0 ? (
 										+activeCategory.id === -1 ? (
-											<Col xs={12} md={12} lg={12}>
+											<Col xs={12} md={12} lg={12} className='w-100'>
 												<CardsSliderComponent
 													sliders={filteredProducts.map((product, index) => (
 														<ProductCardComponent
@@ -330,7 +326,7 @@ const HomePage = () => {
 											</Col>
 										) : (
 											filteredProducts
-												.filter((_, index) => index < 4)
+												.filter((_, index) => index < FILTER_CARDS_COUNT)
 												.map((product, index) => (
 													<Fade key={index} direction='up' delay={index * 100}>
 														<Col>
@@ -352,18 +348,19 @@ const HomePage = () => {
 							</Fade>
 
 							{/* See More Button */}
-							{activeCategory.id !== -1 && filteredProducts.length > 4 && (
-								<Row className='mt-5'>
-									<Zoom delay={100}>
-										<Col className='d-flex justify-content-center align-items-center'>
-											<ButtonComponent
-												text={t('words:buttons.viewMore')}
-												link={`/sections/${activeCategory.section?.id}/categories/${activeCategory.id}`}
-											/>
-										</Col>
-									</Zoom>
-								</Row>
-							)}
+							{activeCategory.id !== -1 &&
+								filteredProducts.length > FILTER_CARDS_COUNT && (
+									<Row className='mt-5'>
+										<Zoom delay={100}>
+											<Col className='d-flex justify-content-center align-items-center'>
+												<ButtonComponent
+													text={t('words:buttons.viewMore')}
+													link={`/sections/${activeCategory.section?.id}/categories/${activeCategory.id}`}
+												/>
+											</Col>
+										</Zoom>
+									</Row>
+								)}
 						</>
 					)}
 				</Container>
@@ -430,7 +427,7 @@ const HomePage = () => {
 				<Container>
 					<Row xs={1} md={2} className='g-4'>
 						{/* Contact Form Container */}
-						<Col className='d-flex flex-column'>
+						<Col className='form-container d-flex flex-column'>
 							<Fade direction='down' delay={40}>
 								<Col className='section-title'>{t('words:contactUs')}</Col>
 							</Fade>
@@ -440,7 +437,7 @@ const HomePage = () => {
 						</Col>
 
 						{/* Contact Details Container */}
-						<Col className='d-flex flex-column'>
+						<Col className='info-container d-flex flex-column'>
 							<Fade direction='down' delay={40}>
 								<Col className='section-title'>{t('words:contactInfo')}</Col>
 							</Fade>

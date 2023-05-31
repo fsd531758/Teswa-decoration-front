@@ -53,7 +53,7 @@
 
 /* Text Container */
 .product-card-component .text-container {
-	color: rgba(var(--action-color), 1);
+	color: rgba(255, 255, 255, 1);
 	top: 100%;
 	transition-property: top;
 	transition-duration: var(--transition-duration);
@@ -88,8 +88,8 @@
 
 .product-card-component .text-container .price > * {
 	background-color: transparent !important;
-	border: 1px solid rgba(var(--action-color), 1);
-	color: rgba(var(--action-color), 1);
+	border: 1px solid rgba(255, 255, 255, 1);
+	color: rgba(255, 255, 255, 1);
 	font-size: 1rem;
 	padding: 0.5rem 1rem;
 }

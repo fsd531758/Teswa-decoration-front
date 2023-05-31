@@ -230,7 +230,7 @@ const ProductDetailsPage = () => {
 							{/* Short Description */}
 							<Fade direction={lang === 'en' ? 'left' : 'right'} delay={60}>
 								<Col
-									className='short-description'
+									className='short-description text-capitalize'
 									dangerouslySetInnerHTML={{
 										__html: product.short_description,
 									}}
@@ -240,7 +240,7 @@ const ProductDetailsPage = () => {
 							{/* Description */}
 							<Fade direction={lang === 'en' ? 'left' : 'right'} delay={80}>
 								<Col
-									className='description'
+									className='description text-capitalize'
 									dangerouslySetInnerHTML={{ __html: product.description }}
 								></Col>
 							</Fade>

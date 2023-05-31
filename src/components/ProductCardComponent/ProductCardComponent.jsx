@@ -60,7 +60,7 @@ const ProductCardComponent = ({ product }) => {
 						{/* Short Description */}
 						{product.short_description && (
 							<Card.Text
-								className='short-description text-limit'
+								className='short-description text-capitalize text-limit'
 								style={{ '--lines': 2 }}
 								dangerouslySetInnerHTML={{ __html: product.short_description }}
 							></Card.Text>

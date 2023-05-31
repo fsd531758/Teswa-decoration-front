@@ -107,14 +107,14 @@ const FooterComponent = () => {
 														<Image
 															fluid
 															src={
-																require('./../../assets/images/logos/logo.png') ??
 																white_logo ??
-																logo
+																logo ??
+																require('./../../assets/images/logos/logo.png')
 															}
 															alt='company logo'
 															className='logo text-capitalize w-100'
 															style={{
-																objectFit: 'cover',
+																objectFit: 'contain',
 																objectPosition: 'center',
 															}}
 															onError={({ currentTarget }) => {
@@ -127,7 +127,8 @@ const FooterComponent = () => {
 
 												{/* Footer Description */}
 												<Col
-													className='description'
+													className='description text-capitalize text-limit'
+													style={{ '--lines': 4 }}
 													dangerouslySetInnerHTML={{
 														__html: footer_description,
 													}}

@@ -68,7 +68,7 @@
 
 /* Description */
 #product-details-page .text-container .description {
-	color: rgba(var(--text-color), 1);
+	color: rgba(var(--text-color), var(--description-alpha-value));
 }
 
 #product-details-page .text-container .description * {

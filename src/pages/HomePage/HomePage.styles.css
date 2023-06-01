@@ -8,7 +8,7 @@
 
 /* Description */
 #home-page .about-section .description {
-	color: rgba(var(--text-color), 0.5);
+	color: rgba(var(--text-color), var(--description-alpha-value));
 }
 
 #home-page .about-section .description * {
@@ -33,7 +33,7 @@
 	padding-top: 6rem;
 	padding-bottom: 6rem;
 	min-height: 80vh;
-	color: rgba(255, 255, 255, 1);
+	color: rgba(var(--primary-color), 1);
 }
 
 /* Background Effect */
@@ -44,20 +44,20 @@
 	left: 0;
 	width: 100%;
 	height: 90%;
-	background-color: rgba(var(--text-color), 1);
+	background-color: #d9d9d9;
 	transform: skewY(calc(-1 * var(--skew-value)))
 		translate(0, var(--translate-y-value));
 	z-index: -1;
 }
 
-/* Title */
-#home-page .experience-section .section-title {
-	color: rgba(255, 255, 255, 1);
+/* Subtitle */
+#home-page .experience-section .section-subtitle {
+	color: #4f5a64;
 }
 
 /* Description */
 #home-page .experience-section .description {
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(var(--primary-color), var(--description-alpha-value));
 }
 
 #home-page .experience-section .description * {
@@ -68,6 +68,10 @@
 /* Image */
 #home-page .experience-section img {
 	max-height: 28rem;
+}
+
+#home-page .experience-section .btn * {
+	color: rgba(var(--primary-color), 1);
 }
 
 /* ******************************************************************************** */
@@ -96,9 +100,9 @@
 }
 
 #home-page .products-filter-section .categories-filter .nav-item .nav-link {
-	color: rgba(var(--primary-color), 0.5);
+	color: rgba(var(--primary-color), var(--description-alpha-value));
 	padding: 0.25rem 0.5rem;
-	border: 2px solid rgba(var(--primary-color), 0.5);
+	border: 1px solid rgba(var(--primary-color), var(--description-alpha-value));
 
 	transition-property: border-color, color;
 	transition-duration: var(--transition-duration);
@@ -153,7 +157,6 @@
 
 .trending-products-section .header-container .section-title {
 	margin-bottom: 0;
-	color: rgba(255, 255, 255, 1);
 }
 
 @media only screen and (max-width: 768px) {
@@ -175,7 +178,7 @@
 	left: 0;
 	width: 100%;
 	height: 90%;
-	background-color: rgba(var(--text-color), 1);
+	background-color: #e9fae2;
 	transform: skewY(calc(-1 * var(--skew-value)))
 		translate(0, var(--translate-y-value));
 	z-index: -1;

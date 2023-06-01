@@ -209,11 +209,6 @@ const HomePage = () => {
 									<ButtonComponent
 										text={t('words:buttons.learnMore')}
 										link={`/${lang}/about-us`}
-										styles={{
-											button: {
-												'--btn-text-color': 'rgba(var(--action-color), 1)',
-											},
-										}}
 									/>
 								</Col>
 							</Row>
@@ -355,7 +350,7 @@ const HomePage = () => {
 											<Col className='d-flex justify-content-center align-items-center'>
 												<ButtonComponent
 													text={t('words:buttons.viewMore')}
-													link={`/sections/${activeCategory.section?.id}/categories/${activeCategory.id}`}
+													link={`/${lang}/sections/${activeCategory.section?.id}/categories/${activeCategory.id}`}
 												/>
 											</Col>
 										</Zoom>

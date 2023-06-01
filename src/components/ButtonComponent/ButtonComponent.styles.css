@@ -15,7 +15,10 @@
 }
 
 .btn * {
-	color: var(--btn-text-color, rgba(var(--text-color), 0.75));
+	color: var(
+		--btn-text-color,
+		rgba(var(--text-color), var(--description-alpha-value))
+	);
 
 	transition-property: color;
 	transition-duration: var(--transition-duration);

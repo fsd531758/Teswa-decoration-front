@@ -55,6 +55,6 @@
 }
 
 .about-card-component .text-container .description {
-	color: rgba(var(--primary-color), 0.5);
+	color: rgba(var(--primary-color), var(--description-alpha-value));
 	text-align: center;
 }

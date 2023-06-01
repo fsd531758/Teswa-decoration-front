@@ -91,10 +91,10 @@ const MainSliderComponent = ({
 
 						{/* Slider Text */}
 						{(slide.sub_title || slide.title || slide.description) && (
-							<Container className='slider-text text-center overflow-hidden'>
+							<Container className='slider-text overflow-hidden'>
 								<Row
 									xs={1}
-									className='g-1 d-flex flex-column justify-content-center align-items-center'
+									className='text-container g-1 d-flex flex-column justify-content-center align-items-center'
 								>
 									{/* Subtitle */}
 									{slide.sub_title && (

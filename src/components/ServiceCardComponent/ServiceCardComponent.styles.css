@@ -38,7 +38,7 @@
 
 /* Description */
 .service-card-component .description {
-	color: rgba(var(--text-color), 0.5);
+	color: rgba(var(--text-color), var(--description-alpha-value));
 }
 
 .service-card-component .description * {

@@ -9,6 +9,8 @@
 	--btn-color: 179, 145, 108; /* #cf9d07 */
 
 	--transition-duration: 500ms;
+
+	--description-alpha-value: 0.75;
 }
 
 /* ************************************************************************** */
@@ -76,7 +78,7 @@ li {
 .page .description li::marker {
 	content: '\f5aa';
 	font-family: 'FontAwesome';
-	color: rgba(var(--action-color), 0.75);
+	color: rgba(var(--action-color), var(--description-alpha-value));
 }
 
 [lang='ar'] .page .description li::marker {

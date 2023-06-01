@@ -19,7 +19,7 @@
 }
 
 .contact-info-component .social-accounts * {
-	color: rgba(var(--text-color), 0.5);
+	color: rgba(var(--text-color), var(--description-alpha-value));
 
 	transition-property: border-color, color, transform;
 	transition-duration: 250ms;

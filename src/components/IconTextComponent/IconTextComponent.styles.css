@@ -24,19 +24,18 @@
 .icon-text svg {
 	width: calc(var(--size) * 1px);
 	height: calc(var(--size) * 1px);
-	color: rgba(var(--text-color), 0.5);
-
-	transition: color var(--transition-duration);
 }
 
+.icon-text svg,
 .icon-text a,
 .icon-text .text-value {
 	text-decoration: none;
-	color: rgba(var(--text-color), 0.5);
+	color: rgba(var(--text-color), var(--description-alpha-value));
 
 	transition: color var(--transition-duration);
 }
 
+.icon-text:hover svg,
 .icon-text:hover * {
 	color: rgba(var(--action-color), 1) !important;
 }

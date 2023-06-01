@@ -28,13 +28,15 @@ const ServiceCardComponent = ({ service, index }) => {
 		>
 			<Card className='service-card-container'>
 				<Card.Body className='text-center'>
-					<Card.Subtitle className='counter'>
-						{`${index < 10 ? `0${index}` : index}.`}
-					</Card.Subtitle>
+					{/* Icon */}
+					<Card.Subtitle className={`icon ${service.icon}`}></Card.Subtitle>
+
+					{/* Title */}
 					<Card.Title className='title text-limit' style={{ '--lines': 1 }}>
 						{service.title}
 					</Card.Title>
 
+					{/* Description */}
 					<Card.Text
 						className='description text-limit'
 						style={{ '--lines': 3 }}

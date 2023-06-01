@@ -72,18 +72,19 @@
 	transform: translate(0, -50%);
 	padding: 1rem;
 	z-index: 33;
+	background: linear-gradient(
+		to right,
+		rgba(255, 255, 255, 0.5) 20%,
+		transparent 40%
+	);
 }
 
 .main-slider-component .slider-text .text-container {
 	width: fit-content;
 	max-width: 50%;
 	color: rgba(var(--text-color), 1);
-	background-color: rgba(255, 255, 255, 0.6);
 	padding: 1.5rem 1.8rem;
-	border-radius: 2rem;
 	opacity: 0;
-	outline-offset: 0.25rem;
-	outline: 2px solid rgba(var(--action-color), 1);
 	transition: opacity calc(1.5 * var(--transition-duration));
 }
 
@@ -153,6 +154,14 @@
 /* ******************************************************************************** */
 /* **********************************   RTL   ************************************* */
 /* ******************************************************************************** */
+[lang='ar'] .slider-container .slider-text {
+	background: linear-gradient(
+		to left,
+		rgba(255, 255, 255, 0.5) 20%,
+		transparent 40%
+	);
+}
+
 [lang='ar'] .slider-container .slider-text .title {
 	line-height: 1.6;
 }

@@ -8,8 +8,8 @@
 	height: 16rem;
 }
 
-/* Counter */
-.service-card-component .counter {
+/* Icon */
+.service-card-component .icon {
 	position: relative;
 	top: 0;
 	direction: ltr !important;
@@ -19,8 +19,12 @@
 	transition: top var(--transition-duration);
 }
 
-.service-card-component:hover .counter {
+.service-card-component:hover .icon {
 	top: -1rem;
+}
+
+.service-card-component .icon::before {
+	font-family: 'FontAwesome' !important;
 }
 
 /* Title */

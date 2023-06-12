@@ -20,6 +20,7 @@ import './ProductDetailsPage.styles.css';
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
 import CardsSliderComponent from './../../components/CardsSliderComponent/CardsSliderComponent';
+import ColorComponent from './../../components/ColorComponent/ColorComponent';
 import LightboxComponent from './../../components/LightboxComponent/LightboxComponent';
 import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
 import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
@@ -291,6 +292,25 @@ const ProductDetailsPage = () => {
 									className='description text-capitalize'
 									dangerouslySetInnerHTML={{ __html: product.description }}
 								></Col>
+							</Fade>
+
+							{/* Available Colors */}
+							<Fade direction={lang === 'en' ? 'left' : 'right'} delay={100}>
+								<Col className='colors'>
+									<Stack>
+										<Col className='text-capitalize mb-3 fs-5'>
+											{t('words:availableColors')}
+										</Col>
+
+										<Row xs={1} sm={2} md={1} lg={2} className='g-4'>
+											{product.colors.map((color, index) => (
+												<Col key={index}>
+													<ColorComponent color={color} />
+												</Col>
+											))}
+										</Row>
+									</Stack>
+								</Col>
 							</Fade>
 						</Row>
 					</Col>

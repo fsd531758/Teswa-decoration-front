@@ -1,0 +1,26 @@
+.color-component {
+	cursor: default;
+}
+
+.color-component .preview {
+	background-color: var(--color);
+	min-height: 2rem;
+}
+
+.color-component .color-title {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.color-component .hex-code {
+	font-size: 0.75rem;
+	font-weight: lighter;
+	cursor: text;
+	direction: ltr;
+	text-align: left;
+}
+
+/* RTL */
+[lang='ar'] .color-component .hex-code {
+	text-align: right;
+}

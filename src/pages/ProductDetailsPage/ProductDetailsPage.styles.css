@@ -56,6 +56,15 @@
 	padding: 0.5rem 1rem;
 }
 
+/* Colors */
+/* #product-details-page .colors .color-component {
+	margin-top: 1rem;
+}
+
+#product-details-page .colors .color-component:first-of-type {
+	margin-top: 0;
+} */
+
 /* Short Description */
 #product-details-page .text-container .short-description {
 	color: rgba(var(--action-color), 1);

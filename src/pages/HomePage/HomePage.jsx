@@ -68,8 +68,8 @@ const HomePage = () => {
 
 	// Products Filter
 	const [activeCategory, setActiveCategory] = useState({
-		id: -1,
-		title: t('words:allCategories'),
+		id: products[0].id,
+		title: products[0].title,
 	});
 	const [filteredProducts, setFilteredProducts] = useState(products);
 	const filterByCategory = (selectedKey) => {
@@ -273,12 +273,6 @@ const HomePage = () => {
 										}, 100);
 									}}
 								>
-									<Nav.Item>
-										<Nav.Link eventKey={-1} className='text-capitalize'>
-											{t('words:allCategories')}
-										</Nav.Link>
-									</Nav.Item>
-
 									{categories.map((category, index) => (
 										<Nav.Item key={index}>
 											<Nav.Link
@@ -305,31 +299,15 @@ const HomePage = () => {
 									className='g-4 overflow-hidden'
 								>
 									{filteredProducts.length > 0 ? (
-										+activeCategory.id === -1 ? (
-											<Col xs={12} md={12} lg={12} className='w-100'>
-												<CardsSliderComponent
-													sliders={filteredProducts.map((product, index) => (
-														<ProductCardComponent
-															key={index}
-															product={product}
-														/>
-													))}
-													isGridEnabled={true}
-													rowsCount={2}
-													isRewindEnabled={true}
-												/>
-											</Col>
-										) : (
-											filteredProducts
-												.filter((_, index) => index < FILTER_CARDS_COUNT)
-												.map((product, index) => (
-													<Fade key={index} direction='up' delay={index * 100}>
-														<Col>
-															<ProductCardComponent product={product} />
-														</Col>
-													</Fade>
-												))
-										)
+										filteredProducts
+											.filter((_, index) => index < FILTER_CARDS_COUNT)
+											.map((product, index) => (
+												<Fade key={index} direction='up' delay={index * 100}>
+													<Col>
+														<ProductCardComponent product={product} />
+													</Col>
+												</Fade>
+											))
 									) : (
 										<Fade direction='up' delay={20}>
 											<Col xs={12} className='error'>

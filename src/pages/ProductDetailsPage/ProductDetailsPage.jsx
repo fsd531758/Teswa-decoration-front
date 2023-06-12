@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { Badge, Col, Container, Image, Row } from 'react-bootstrap';
+import { Badge, Col, Container, Image, Row, Stack } from 'react-bootstrap';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useLocation, useParams } from 'react-router-dom';
 import { REGEX, replacePathVariables } from './../../helpers/general';
@@ -19,6 +19,7 @@ import './ProductDetailsPage.styles.css';
 // Components
 import BreadcrumbComponent from './../../components/BreadcrumbComponent/BreadcrumbComponent';
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
+import CardsSliderComponent from './../../components/CardsSliderComponent/CardsSliderComponent';
 import LightboxComponent from './../../components/LightboxComponent/LightboxComponent';
 import LoadingComponent from './../../components/LoadingComponent/LoadingComponent';
 import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
@@ -50,6 +51,14 @@ const ProductDetailsPage = () => {
 	const { product, isSingleProductLoading } = useSelector(
 		(state) => state.products
 	);
+
+	const [activeImage, setActiveImage] = useState(null);
+	useEffect(() => {
+		setActiveImage({
+			image: product?.images?.find((_, index) => index === 0),
+			index: 0,
+		});
+	}, [lang, product]);
 
 	// Breadcrumb State
 	const [breadcrumbItems, setBreadcrumbItems] = useState([]);
@@ -150,58 +159,97 @@ const ProductDetailsPage = () => {
 				<Row xs={1} md={2} className='g-4'>
 					{/* Images Slider */}
 					<Col className='images-container'>
-						<Row
-							xs={
-								product.images.filter((image, _) => image !== null).length >= 2
-									? 2
-									: 1
-							}
-						>
-							{product.images
-								.filter((_, index) => index < 4)
-								.map(
-									(image, index) =>
-										image && (
-											<Col key={index} className='image-container'>
-												<Fade delay={`${index * 30}`}>
-													<Container
-														fluid
-														className='image overflow-hidden position-relative w-100 p-0'
-													>
-														<Image
-															fluid
-															src={image.path ?? image}
-															alt='product thumbnail'
-															className='text-capitalize w-100 h-100'
-															style={{
-																objectFit: 'contain',
-																objectPosition: 'center',
-															}}
-															onError={({ currentTarget }) => {
-																currentTarget.onerror = null; // prevents looping
-																currentTarget.src = require('./../../assets/images/logos/logo.png');
-															}}
-															onClick={() =>
-																setLightbox({
-																	isOpen: true,
-																	index: index,
-																})
-															}
-														/>
-													</Container>
-												</Fade>
-											</Col>
-										)
-								)}
+						<Stack>
+							{/* Image */}
+							<Col className='image-preview'>
+								<Container
+									fluid
+									className='image overflow-hidden position-relative w-100 p-0'
+								>
+									<Image
+										fluid
+										src={activeImage?.image?.path ?? activeImage?.image ?? ''}
+										alt='product thumbnail'
+										className='text-capitalize w-100 h-100'
+										style={{
+											objectFit: 'contain',
+											objectPosition: 'center',
+										}}
+										onError={({ currentTarget }) => {
+											currentTarget.onerror = null; // prevents looping
+											currentTarget.src = require('./../../assets/images/logos/logo.png');
+										}}
+										onClick={() => {
+											setLightbox({
+												isOpen: true,
+												index: activeImage?.index,
+											});
+										}}
+									/>
+								</Container>
 
-							{/* Lightbox Container */}
-							<LightboxComponent
-								gallery={product.images}
-								pathname={'<object>.path'}
-								lightbox={lightbox}
-								setLightbox={setLightbox}
-							/>
-						</Row>
+								{/* Lightbox Container */}
+								<LightboxComponent
+									gallery={product?.images}
+									pathname={'<object>.path'}
+									lightbox={lightbox}
+									setLightbox={setLightbox}
+								/>
+							</Col>
+
+							{/* Slider */}
+							<Col className='image-container mt-4 px-0'>
+								<CardsSliderComponent
+									sliders={product.images.map((image, index) => (
+										<Container
+											key={index}
+											fluid
+											className={`image ${
+												activeImage?.image?.id === image?.id ? 'active' : ''
+											} overflow-hidden position-relative w-100 p-0`}
+										>
+											<Image
+												fluid
+												src={image?.path ?? image ?? ''}
+												alt='product thumbnail'
+												className='text-capitalize w-100 h-100'
+												style={{
+													objectFit: 'contain',
+													objectPosition: 'center',
+												}}
+												onError={({ currentTarget }) => {
+													currentTarget.onerror = null; // prevents looping
+													currentTarget.src = require('./../../assets/images/logos/logo.png');
+												}}
+												onClick={() =>
+													setActiveImage({ image: image, index: index })
+												}
+											/>
+										</Container>
+									))}
+									slidesPerView={2}
+									spaceBetween={10}
+									breakpoints={{
+										576: {
+											slidesPerView: 3,
+											spaceBetween: 20,
+										},
+										768: {
+											slidesPerView: 2,
+											spaceBetween: 20,
+										},
+										992: {
+											slidesPerView: 3,
+											spaceBetween: 30,
+										},
+										1200: {
+											slidesPerView: 4,
+											spaceBetween: 30,
+										},
+									}}
+								/>
+							</Col>
+						</Stack>
 					</Col>
 
 					{/* Text Container */}

@@ -17,6 +17,18 @@ const CardsSliderComponent = ({
 	isGridEnabled = false,
 	rowsCount = 1,
 	isRewindEnabled = false,
+	slidesPerView = 1,
+	spaceBetween = 10,
+	breakpoints = {
+		576: {
+			slidesPerView: 2,
+			spaceBetween: 20,
+		},
+		992: {
+			slidesPerView: 3,
+			spaceBetween: 30,
+		},
+	},
 }) => {
 	// i18next
 	const { lang } = useParams();
@@ -36,8 +48,8 @@ const CardsSliderComponent = ({
 							lang={lang ?? 'ar'}
 							dir={lang === 'en' ? 'ltr' : 'rtl'}
 							key={lang}
-							slidesPerView={1}
-							spaceBetween={10}
+							slidesPerView={slidesPerView}
+							spaceBetween={spaceBetween}
 							grid={{
 								enabled: isGridEnabled,
 								rows: rowsCount,
@@ -50,16 +62,7 @@ const CardsSliderComponent = ({
 							}}
 							rewind={isRewindEnabled}
 							loop={!isRewindEnabled}
-							breakpoints={{
-								576: {
-									slidesPerView: 2,
-									spaceBetween: 20,
-								},
-								992: {
-									slidesPerView: 3,
-									spaceBetween: 30,
-								},
-							}}
+							breakpoints={breakpoints}
 							grabCursor={false}
 							modules={[Grid, Autoplay]}
 							className='cards-slider-component'

@@ -1,7 +1,7 @@
 // Backend Base URL
 export const BASE_URL = {
 	local: 'http://localhost:8000/api',
-	demo: 'https://demoyoursite.net/asmaa/fan_elmeamar_decoration/public/api',
+	demo: 'https://demoyoursite.xyz/asmaa/fan_elmeamar_decoration/public/api',
 };
 
 // Replace IDs found within URL

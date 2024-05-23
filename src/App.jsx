@@ -13,11 +13,9 @@ import { isMultilingual, routes } from './routes/index.routes';
 // Pages
 import MainTemplatePage from './pages/_MainTemplatePage/MainTemplatePage';
 import AboutPage from './pages/AboutPage/AboutPage';
-import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import ProductsPage from './pages/ProductsPage/ProductsPage';
 import QuoteRequestPage from './pages/QuoteRequestPage/QuoteRequestPage';
 import ServicesPage from './pages/ServicesPage/ServicesPage';
 const App = () => {
@@ -82,24 +80,6 @@ const App = () => {
 					element={
 						<MainTemplatePage>
 							<QuoteRequestPage />
-						</MainTemplatePage>
-					}
-				/>
-				{/* Section Details Page - Categories Page */}
-				<Route
-					path={routes.sections.single}
-					element={
-						<MainTemplatePage>
-							<CategoriesPage />
-						</MainTemplatePage>
-					}
-				/>
-				{/* Category Details Page - Products Page */}
-				<Route
-					path={routes.categories.single}
-					element={
-						<MainTemplatePage>
-							<ProductsPage />
 						</MainTemplatePage>
 					}
 				/>

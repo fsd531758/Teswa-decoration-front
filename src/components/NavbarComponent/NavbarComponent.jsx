@@ -1,18 +1,10 @@
-import { GB, SA } from 'country-flag-icons/react/3x2';
 import React, { useEffect, useState } from 'react';
-import {
-	Container,
-	Image,
-	Nav,
-	NavDropdown,
-	Navbar,
-	Offcanvas,
-} from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import LangComponent from '../LangComponent/LangComponent';
 import { REGEX, replacePathVariables } from './../../helpers/general';
 import { isMultilingual, routes } from './../../routes/index.routes';
-
 // Images
 
 // Redux
@@ -172,34 +164,6 @@ const NavbarComponent = () => {
 								{t('words:navbar.services')}
 							</Nav.Link>
 
-							{/* Products */}
-							<NavDropdown
-								title={t('words:navbar.products')}
-								active={location.pathname.includes('sections')}
-								id='basic-nav-dropdown'
-							>
-								{sections.map((section, index) => (
-									<NavDropdown.Item
-										key={index}
-										as={NavLink}
-										to={routes.sections.single.replace(
-											REGEX,
-											function (matched) {
-												return replacePathVariables(matched, {
-													lang: lang,
-													section_id: section.id,
-												});
-											}
-										)}
-										onClick={handleClose}
-										className='text-limit'
-										style={{ '--lines': 1 }}
-									>
-										{section.title}
-									</NavDropdown.Item>
-								))}
-							</NavDropdown>
-
 							{/* Request Quote */}
 							<Nav.Link
 								as={NavLink}
@@ -249,9 +213,9 @@ const NavbarComponent = () => {
 								>
 									<span>
 										{lang === 'en' ? (
-											<SA width='1.5rem' />
+											<LangComponent lang='ع' />
 										) : (
-											<GB width='1.5rem' />
+											<LangComponent lang='EN' />
 										)}
 									</span>
 								</Navbar.Text>

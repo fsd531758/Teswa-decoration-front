@@ -25,7 +25,6 @@ import LoadingComponent from './../../components/LoadingComponent/LoadingCompone
 import MetaTagsComponent from './../../components/MetaTagsComponent/MetaTagsComponent';
 import NavbarComponent from './../../components/NavbarComponent/NavbarComponent';
 import WhatsappIconComponent from './../../components/WhatsappIconComponent/WhatsappIconComponent';
-
 const MainTemplatePage = ({ children }) => {
 	// Handle Language Change
 	const { lang } = useParams();
@@ -55,23 +54,16 @@ const MainTemplatePage = ({ children }) => {
 		// eslint-disable-next-line
 	}, [lang]);
 
-	const { isSettingsLoading, isContactsLoading } = useSelector(
-		(state) => state.settingsData
-	);
+	const {
+		isSettingsLoading,
+		isContactsLoading,
+		settings: { whatsapp },
+	} = useSelector((state) => state.settingsData);
 	const { isHomeDataLoading } = useSelector((state) => state.homeData);
 	const { isSectionsLoading } = useSelector((state) => state.sections);
 	const { isCategoriesLoading } = useSelector((state) => state.categories);
 	const { isProductsLoading } = useSelector((state) => state.products);
 	const { isAboutDataLoading } = useSelector((state) => state.aboutData);
-
-	// Scroll To Top On Initial Render
-	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: 'smooth',
-		});
-	}, [lang]);
 
 	return isSettingsLoading ||
 		isContactsLoading ||
@@ -96,7 +88,7 @@ const MainTemplatePage = ({ children }) => {
 			<FooterComponent />
 
 			{/* Whatsapp Icon */}
-			<WhatsappIconComponent />
+			{whatsapp == null || whatsapp == '' ? <></> : <WhatsappIconComponent />}
 
 			{/* Go To Top Button */}
 			<GoToTopComponent />

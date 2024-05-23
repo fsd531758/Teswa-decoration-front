@@ -17,12 +17,14 @@ import './styles/PhoneInputComponent.styles.css';
 
 // i18next
 import './i18n';
+// HelmetProvider
 
 // Redux
 import { Provider } from 'react-redux';
 import { store } from './store/index.store';
-
 // Components
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import LoadingComponent from './components/LoadingComponent/LoadingComponent';
 
@@ -34,10 +36,14 @@ AOS.init({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<Suspense fallback={<LoadingComponent />}>
-				<App />
-			</Suspense>
-		</Provider>
+		<HelmetProvider>
+			<Provider store={store}>
+				<Suspense fallback={<LoadingComponent />}>
+					<BrowserRouter>
+						<App />
+					</BrowserRouter>
+				</Suspense>
+			</Provider>
+		</HelmetProvider>
 	</React.StrictMode>
 );

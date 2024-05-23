@@ -12,7 +12,6 @@ import './HomePage.styles.css';
 
 // Components
 import ButtonComponent from './../../components/ButtonComponent/ButtonComponent';
-import CardsSliderComponent from './../../components/CardsSliderComponent/CardsSliderComponent';
 import ContactFormComponent from './../../components/ContactFormComponent/ContactFormComponent';
 import ContactInfoComponent from './../../components/ContactInfoComponent/ContactInfoComponent';
 import MainSliderComponent from './../../components/MainSliderComponent/MainSliderComponent';
@@ -81,15 +80,6 @@ const HomePage = () => {
 			);
 		}
 	};
-
-	// Scroll To Top On Initial Render
-	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: 'smooth',
-		});
-	}, [lang]);
 
 	return (
 		<Container
@@ -349,49 +339,6 @@ const HomePage = () => {
 							sliders={partners}
 						/>
 					</Fade>
-				</Container>
-			</Container>
-
-			{/* Trending Products Slider */}
-			<Container
-				fluid
-				className='trending-products-section position-relative px-0 overflow-hidden'
-			>
-				<Container>
-					<Row xs={1} className='g-4'>
-						{/* Title & Subtitle Container */}
-						<Col className='header-container'>
-							<Row
-								xs={1}
-								className='d-flex flex-column justify-content-center align-items-center overflow-hidden'
-							>
-								{/* Subtitle */}
-								<Fade direction='down' delay={40}>
-									<Col className='section-subtitle text-center'>
-										{trendingProducts.sub_title}
-									</Col>
-								</Fade>
-
-								{/* Title */}
-								<Fade direction='up' delay={40}>
-									<Col className='section-title text-center'>
-										{trendingProducts.title}
-									</Col>
-								</Fade>
-							</Row>
-						</Col>
-
-						{/* Trending Products */}
-						<Col className='products-container'>
-							<Fade delay={100}>
-								<CardsSliderComponent
-									sliders={trendingProductsData.map((product, index) => (
-										<ProductCardComponent key={index} product={product} />
-									))}
-								/>
-							</Fade>
-						</Col>
-					</Row>
 				</Container>
 			</Container>
 

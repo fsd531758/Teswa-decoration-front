@@ -1,24 +1,40 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {
+	Navigate,
+	Route,
+	Routes,
+	useLocation,
+	useParams,
+} from 'react-router-dom';
 
 // Routes
 import { isMultilingual, routes } from './routes/index.routes';
 
 // Pages
+import MainTemplatePage from './pages/_MainTemplatePage/MainTemplatePage';
 import AboutPage from './pages/AboutPage/AboutPage';
 import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 import QuoteRequestPage from './pages/QuoteRequestPage/QuoteRequestPage';
 import ServicesPage from './pages/ServicesPage/ServicesPage';
-import MainTemplatePage from './pages/_MainTemplatePage/MainTemplatePage';
-
 const App = () => {
+	// Scroll To Top On Initial Render and location change
+	let location = useLocation();
+	const { lang } = useParams();
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'smooth',
+		});
+	}, [lang, location]);
+
 	return (
-		<BrowserRouter>
+		<>
 			{/* Available Routes */}
 			<Routes>
 				{/* Home Page */}
@@ -60,6 +76,15 @@ const App = () => {
 					}
 				/>
 
+				{/* Quote Request Page */}
+				<Route
+					path={routes.quoteRequest}
+					element={
+						<MainTemplatePage>
+							<QuoteRequestPage />
+						</MainTemplatePage>
+					}
+				/>
 				{/* Section Details Page - Categories Page */}
 				<Route
 					path={routes.sections.single}
@@ -69,33 +94,12 @@ const App = () => {
 						</MainTemplatePage>
 					}
 				/>
-
 				{/* Category Details Page - Products Page */}
 				<Route
 					path={routes.categories.single}
 					element={
 						<MainTemplatePage>
 							<ProductsPage />
-						</MainTemplatePage>
-					}
-				/>
-
-				{/* Product Details Page */}
-				<Route
-					path={routes.products.single}
-					element={
-						<MainTemplatePage>
-							<ProductDetailsPage />
-						</MainTemplatePage>
-					}
-				/>
-
-				{/* Quote Request Page */}
-				<Route
-					path={routes.quoteRequest}
-					element={
-						<MainTemplatePage>
-							<QuoteRequestPage />
 						</MainTemplatePage>
 					}
 				/>
@@ -113,7 +117,7 @@ const App = () => {
 				{/* Not Found Page: Error 404 */}
 				<Route path={routes.notFound} element={<NotFoundPage />} />
 			</Routes>
-		</BrowserRouter>
+		</>
 	);
 };
 

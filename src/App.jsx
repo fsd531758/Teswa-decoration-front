@@ -17,6 +17,7 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import QuoteRequestPage from './pages/QuoteRequestPage/QuoteRequestPage';
+import ServiceDetailsPage from './pages/ServiceDetailsPage/ServiceDetailsPage';
 import ServicesPage from './pages/ServicesPage/ServicesPage';
 const App = () => {
 	// Scroll To Top On Initial Render and location change
@@ -90,6 +91,15 @@ const App = () => {
 					element={
 						<MainTemplatePage>
 							<ServicesPage />
+						</MainTemplatePage>
+					}
+				/>
+				{/* Service Details Page */}
+				<Route
+					path={routes.services.single}
+					element={
+						<MainTemplatePage>
+							<ServiceDetailsPage />
 						</MainTemplatePage>
 					}
 				/>

@@ -36,7 +36,7 @@ const NavbarComponent = () => {
 	const {
 		settings: { logo },
 	} = useSelector((state) => state.settingsData);
-	const { sections } = useSelector((state) => state.sections);
+	//const { sections } = useSelector((state) => state.sections);
 
 	// Navbar Handlers
 	const toggleNavbar = () => {
@@ -49,7 +49,7 @@ const NavbarComponent = () => {
 			lang={lang ?? 'ar'}
 			dir={lang === 'en' ? 'ltr' : 'rtl'}
 			id='navbar-component'
-			bg='light'
+			bg='red'
 			variant='light'
 			fixed='top'
 			expand='lg'
@@ -162,6 +162,19 @@ const NavbarComponent = () => {
 								onClick={handleClose}
 							>
 								{t('words:navbar.services')}
+							</Nav.Link>
+
+							{/* Business */}
+							<Nav.Link
+								as={NavLink}
+								to={routes.business.root.replace(REGEX, function (matched) {
+									return replacePathVariables(matched, {
+										lang: lang,
+									});
+								})}
+								onClick={handleClose}
+							>
+								{t('words:navbar.business')}
 							</Nav.Link>
 
 							{/* Request Quote */}

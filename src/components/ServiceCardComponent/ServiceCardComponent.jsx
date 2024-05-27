@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Card, Container } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // i18next
 import { useTranslation } from 'react-i18next';
@@ -26,24 +26,29 @@ const ServiceCardComponent = ({ service, index }) => {
 			fluid
 			className='service-card-component'
 		>
-			<Card className='service-card-container'>
-				<Card.Body className='text-center'>
-					{/* Icon */}
-					<Card.Subtitle className={`icon ${service.icon}`}></Card.Subtitle>
-
-					{/* Title */}
-					<Card.Title className='title text-limit' style={{ '--lines': 1 }}>
-						{service.title}
-					</Card.Title>
-
-					{/* Description */}
-					<Card.Text
-						className='description text-limit'
-						style={{ '--lines': 3 }}
-						dangerouslySetInnerHTML={{ __html: service.description }}
-					></Card.Text>
-				</Card.Body>
-			</Card>
+			<Link to={`/${lang}/services/${service.id}`}>
+				<Card className='h-100'>
+					<Card.Img
+						fluid='true'
+						src={service.image}
+						alt='category card image'
+						className='text-capitalize w-100 h-100'
+						style={{
+							objectFit: 'fill',
+							objectPosition: 'center',
+						}}
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null; // prevents looping
+							currentTarget.src = require('./../../assets/images/logos/logo.png');
+						}}
+					/>
+					<Card.Body className='text-container'>
+						<Card.Title className='title text-capitalize'>
+							{service.title}
+						</Card.Title>
+					</Card.Body>
+				</Card>
+			</Link>
 		</Container>
 	);
 };

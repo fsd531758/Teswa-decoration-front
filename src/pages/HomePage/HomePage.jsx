@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Fade, Zoom } from 'react-awesome-reveal';
-import { Col, Container, Image, Nav, Row } from 'react-bootstrap';
+import { Fade } from 'react-awesome-reveal';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
@@ -62,14 +62,14 @@ const HomePage = () => {
 		trendingProducts,
 		trendingProductsData,
 	} = useSelector((state) => state.homeData);
-	const { categories } = useSelector((state) => state.categories);
+	//const { categories } = useSelector((state) => state.categories);
 	const { products } = useSelector((state) => state.products);
 
 	// Products Filter
-	const [activeCategory, setActiveCategory] = useState({
+	/*const [activeCategory, setActiveCategory] = useState({
 		id: products[0].id,
 		title: products[0].title,
-	});
+	});*/
 	const [filteredProducts, setFilteredProducts] = useState(products);
 	const filterByCategory = (selectedKey) => {
 		if (+selectedKey === -1) {
@@ -243,7 +243,7 @@ const HomePage = () => {
 						</Fade>
 
 						{/* Categories Filter */}
-						<Fade direction='up' delay={60}>
+						{/* 						<Fade direction='up' delay={60}>
 							<Col className='categories-filter'>
 								<Nav
 									activeKey={activeCategory.id}
@@ -275,7 +275,7 @@ const HomePage = () => {
 									))}
 								</Nav>
 							</Col>
-						</Fade>
+						</Fade> */}
 					</Row>
 
 					{/* Filtered Products */}
@@ -310,7 +310,7 @@ const HomePage = () => {
 								</Row>
 							</Fade>
 
-							{/* See More Button */}
+							{/* See More Button
 							{activeCategory.id !== -1 &&
 								filteredProducts.length > FILTER_CARDS_COUNT && (
 									<Row className='mt-5'>
@@ -324,6 +324,7 @@ const HomePage = () => {
 										</Zoom>
 									</Row>
 								)}
+								*/}
 						</>
 					)}
 				</Container>

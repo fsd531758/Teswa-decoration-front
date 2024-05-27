@@ -16,9 +16,9 @@ export const routes = {
 		root: isMultilingual ? '/:lang/services' : '/services',
 
 		// ! NOT USED AT ALL
-		// single: isMultilingual
-		// 	? '/:lang/services/:service_id'
-		// 	: '/services/:service_id',
+		single: isMultilingual
+			? '/:lang/services/:service_id'
+			: '/services/:service_id',
 	},
 
 	sections: {
@@ -41,14 +41,12 @@ export const routes = {
 			: '/sections/:section_id/categories/:category_id',
 	},
 
-	products: {
+	business: {
 		// ! USE (categories.single) INSTEAD
-		// root: isMultilingual
-		// 	? '/:lang/sections/:section_id/categories/:category_id/products'
-		// 	: '/sections/:section_id/categories/:category_id/products',
+		root: isMultilingual ? '/:lang/products' : '/products',
 
 		single: isMultilingual
-			? '/:lang/sections/:section_id/categories/:category_id/products/:product_id'
+			? '/:lang/products/:product_id'
 			: '/sections/:section_id/categories/:category_id/products/:product_id',
 	},
 };
